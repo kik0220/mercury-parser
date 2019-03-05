@@ -29,6 +29,7 @@
     "mercury-parser": "./cli.js"
   },
   "scripts": {
+    "start": "node app.js",
     "lint": "eslint . --fix",
     "lint:ci": "remark . && eslint .",
     "lint-fix-quiet": "eslint --fix --quiet",
@@ -108,6 +109,7 @@
     "watchify": "^3.11.1"
   },
   "dependencies": {
+    "express": "^4.16.4",
     "@babel/runtime-corejs2": "^7.2.0",
     "@postlight/ci-failed-test-reporter": "^1.0",
     "browser-request": "github:postlight/browser-request#feat-add-headers-to-response",
