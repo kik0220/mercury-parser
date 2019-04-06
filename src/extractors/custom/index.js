@@ -131,6 +131,7 @@ export * from './www3.nhk.or.jp';
 export * from './gihyo.jp';
 export * from './watch.impress.co.jp';
 export * from './www.security-next.com';
+export * from './codezine.jp';
 export * from './www.lemonde.fr';
 export * from './www.phoronix.com';
 export * from './pitchfork.com';
