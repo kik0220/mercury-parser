@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" version="XHTML+RDFa 1.0" dir="ltr" xmlns:fb="http://ogp.me/ns/fb#" xmlns:og="http://ogp.me/ns#" xmlns:article="http://ogp.me/ns/article#" xmlns:book="http://ogp.me/ns/book#" xmlns:profile="http://ogp.me/ns/profile#" xmlns:video="http://ogp.me/ns/video#" xmlns:product="http://ogp.me/ns/product#">
+
+<head profile="http://www.w3.org/1999/xhtml/vocab">
+  <meta http-equiv="Content-Type" value="text/html; charset=utf-8">
+<link rel="shortcut icon" href="https://thinkit.co.jp/favicon.ico" type="image/vnd.microsoft.icon">
+<meta name="viewport" value="width=device-width, initial-scale=1.0">
+<meta name="description" value="&#x306F;&#x3058;&#x3081;&#x306B; &#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;&#x306B;&#x63A5;&#x7D9A;&#x3055;&#x308C;&#x305F;&#x30C7;&#x30D0;&#x30A4;&#x30B9;&#x306E;&#x666E;&#x53CA;&#x306B;&#x3088;&#x308A;&#x3001;&#x3055;&#x307E;&#x3056;&#x307E;&#x306A;&#x6A5F;&#x5668;&#x304C;&#x5927;&#x91CF;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x751F;&#x6210;&#x3059;&#x308B;IoT&#xFF08;Internet of Things&#xFF09;&#x304C;&#x9032;&#x5C55;&#x3057;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;&#x307E;&#x305F;&#x3001;AI&#x30FB;&#x6A5F;&#x68B0;&#x5B66;&#x7FD2;&#x6280;&#x8853;&#x306E;&#x767A;&#x5C55;&#x306B;&#x3088;&#x308A;&#x3001;&#x3053;&#x306E;&#x5927;&#x91CF;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x6D3B;&#x7528;&#x3057;&#x305F;&#x30C7;&#x30FC;&#x30BF;&#x5206;&#x6790;&#x304C;&#x6CE8;&#x76EE;&#x3092;&#x96C6;&#x3081;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002; &#x3053;&#x306E;&#x3088;&#x3046;&#x306A;&#x80CC;&#x666F;&#x304B;&#x3089;&#x3001;&#x60C5;&#x5831;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x304C;&#x53CE;&#x96C6;&#x30FB;&#x84C4;&#x7A4D;&#x3059;&#x3079;&#x304D;&#x30C7;&#x30FC;&#x30BF;&#x91CF;&#x306F;&#x6025;&#x6FC0;&#x306B;&#x5897;&#x52A0;&#x3057;&#x3066;&#x304A;&#x308A;&#x3001;&#x304B;&#x3064;&#x84C4;&#x7A4D;&#x3057;&#x305F;&#x5927;&#x91CF;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x52B9;&#x7387;&#x3088;&#x304F;&#x5206;&#x6790;&#x3059;&#x308B;&#x3053;&#x3068;&#x304C;&#x6C42;&#x3081;&#x3089;&#x308C;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;Apache Kudu&#xFF08;&#x4EE5;&#x964D;&#x3001;Kudu&#xFF09;&#x306F;&#x3053;&#x306E;&#x3088;&#x3046;&#x306A;&#x30D3;&#x30C3;&#x30B0;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x84C4;&#x7A4D;&#x3068;&#x5206;&#x6790;&#x306B;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x30B9;&#x30C8;&#x30A2;&#x3068;&#x3057;&#x3066;&#x6CE8;&#x76EE;&#x3092;&#x96C6;&#x3081;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;">
+<meta name="abstract" value="&#x306F;&#x3058;&#x3081;&#x306B; &#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;&#x306B;&#x63A5;&#x7D9A;&#x3055;&#x308C;&#x305F;&#x30C7;&#x30D0;&#x30A4;&#x30B9;&#x306E;&#x666E;&#x53CA;&#x306B;&#x3088;&#x308A;&#x3001;&#x3055;&#x307E;&#x3056;&#x307E;&#x306A;&#x6A5F;&#x5668;&#x304C;&#x5927;&#x91CF;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x751F;&#x6210;&#x3059;&#x308B;IoT&#xFF08;Internet of Things&#xFF09;&#x304C;&#x9032;&#x5C55;&#x3057;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;&#x307E;&#x305F;&#x3001;AI&#x30FB;&#x6A5F;&#x68B0;&#x5B66;&#x7FD2;&#x6280;&#x8853;&#x306E;&#x767A;&#x5C55;&#x306B;&#x3088;&#x308A;&#x3001;&#x3053;&#x306E;&#x5927;&#x91CF;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x6D3B;&#x7528;&#x3057;&#x305F;&#x30C7;&#x30FC;&#x30BF;&#x5206;&#x6790;&#x304C;&#x6CE8;&#x76EE;&#x3092;&#x96C6;&#x3081;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002; &#x3053;&#x306E;&#x3088;&#x3046;&#x306A;&#x80CC;&#x666F;&#x304B;&#x3089;&#x3001;&#x60C5;&#x5831;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x304C;&#x53CE;&#x96C6;&#x30FB;&#x84C4;&#x7A4D;&#x3059;&#x3079;&#x304D;&#x30C7;&#x30FC;&#x30BF;&#x91CF;&#x306F;&#x6025;&#x6FC0;&#x306B;&#x5897;&#x52A0;&#x3057;&#x3066;&#x304A;&#x308A;&#x3001;&#x304B;&#x3064;&#x84C4;&#x7A4D;&#x3057;&#x305F;&#x5927;&#x91CF;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x52B9;&#x7387;&#x3088;&#x304F;&#x5206;&#x6790;&#x3059;&#x308B;&#x3053;&#x3068;&#x304C;&#x6C42;&#x3081;&#x3089;&#x308C;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;Apache Kudu&#xFF08;&#x4EE5;&#x964D;&#x3001;Kudu&#xFF09;&#x306F;&#x3053;&#x306E;&#x3088;&#x3046;&#x306A;&#x30D3;&#x30C3;&#x30B0;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x84C4;&#x7A4D;&#x3068;&#x5206;&#x6790;&#x306B;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x30B9;&#x30C8;&#x30A2;&#x3068;&#x3057;&#x3066;&#x6CE8;&#x76EE;&#x3092;&#x96C6;&#x3081;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;">
+<meta name="keywords" value="Think IT,OSS,&#x30A4;&#x30F3;&#x30D7;&#x30EC;&#x30B9;,&#x30AA;&#x30FC;&#x30D7;&#x30F3;&#x30BD;&#x30FC;&#x30B9;">
+<meta name="generator" value="IBCMS">
+<link rel="canonical" href="https://thinkit.co.jp/article/15893">
+<meta name="rights" value="Impress Corporation. An Impress Group Company">
+<link rel="shortlink" href="https://thinkit.co.jp/node/15893">
+<meta value="100001541122742" name="fb:admins">
+<meta value="Think IT&#xFF08;&#x30B7;&#x30F3;&#x30AF;&#x30A4;&#x30C3;&#x30C8;&#xFF09;" name="og:site_name">
+<meta value="article" name="og:type">
+<meta value="&#x5206;&#x6563;&#x578B;&#x30C7;&#x30FC;&#x30BF;&#x30B9;&#x30C8;&#x30A2;Apache Kudu&#x306E;&#x7279;&#x5FB4;&#x3068;&#x30E6;&#x30FC;&#x30B9;&#x30B1;&#x30FC;&#x30B9;" name="og:title">
+<meta value="https://thinkit.co.jp/article/15893" name="og:url">
+<meta value="https://thinkit.co.jp/sites/default/files/main_images/15893_kudu_logo.png" name="og:image">
+<meta value="https://thinkit.co.jp/sites/default/files/main_images/15893_kudu_logo.png" name="og:image:secure_url">
+<meta name="twitter:card" value="summary">
+<meta name="twitter:site" value="thinkitcojp">
+<meta name="twitter:title" value="&#x5206;&#x6563;&#x578B;&#x30C7;&#x30FC;&#x30BF;&#x30B9;&#x30C8;&#x30A2;Apache Kudu&#x306E;&#x7279;&#x5FB4;&#x3068;&#x30E6;&#x30FC;&#x30B9;&#x30B1;&#x30FC;&#x30B9;">
+<meta name="twitter:url" value="https://thinkit.co.jp/article/15893">
+<meta name="twitter:description" value="&#x306F;&#x3058;&#x3081;&#x306B; &#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;&#x306B;&#x63A5;&#x7D9A;&#x3055;&#x308C;&#x305F;&#x30C7;&#x30D0;&#x30A4;&#x30B9;&#x306E;&#x666E;&#x53CA;&#x306B;&#x3088;&#x308A;&#x3001;&#x3055;&#x307E;&#x3056;&#x307E;&#x306A;&#x6A5F;&#x5668;&#x304C;&#x5927;&#x91CF;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x751F;&#x6210;&#x3059;&#x308B;IoT&#xFF08;Internet of Things&#xFF09;&#x304C;&#x9032;&#x5C55;&#x3057;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;&#x307E;&#x305F;&#x3001;AI&#x30FB;&#x6A5F;&#x68B0;&#x5B66;&#x7FD2;&#x6280;&#x8853;&#x306E;&#x767A;&#x5C55;&#x306B;&#x3088;&#x308A;&#x3001;&#x3053;&#x306E;&#x5927;&#x91CF;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x6D3B;&#x7528;&#x3057;&#x305F;&#x30C7;&#x30FC;&#x30BF;&#x5206;&#x6790;&#x304C;&#x6CE8;&#x76EE;&#x3092;&#x96C6;&#x3081;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002; &#x3053;&#x306E;&#x3088;&#x3046;&#x306A;&#x80CC;&#x666F;&#x304B;&#x3089;&#x3001;&#x60C5;&#x5831;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x304C;&#x53CE;&#x96C6;&#x30FB;&#x84C4;&#x7A4D;&#x3059;&#x3079;&#x304D;&#x30C7;&#x30FC;&#x30BF;&#x91CF;&#x306F;&#x6025;&#x6FC0;&#x306B;&#x5897;&#x52A0;&#x3057;&#x3066;&#x304A;&#x308A;&#x3001;&#x304B;&#x3064;&#x84C4;&#x7A4D;&#x3057;&#x305F;&#x5927;&#x91CF;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x52B9;&#x7387;&#x3088;&#x304F;&#x5206;&#x6790;&#x3059;&#x308B;&#x3053;&#x3068;&#x304C;&#x6C42;&#x3081;&#x3089;&#x308C;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;Apache Kudu&#xFF08;&#x4EE5;&#x964D;&#x3001;Kudu&#xFF09;&#x306F;&#x3053;&#x306E;&#x3088;&#x3046;&#x306A;&#x30D3;&#x30C3;&#x30B0;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x84C4;&#x7A4D;&#x3068;&#x5206;&#x6790;&#x306B;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x30B9;&#x30C8;&#x30A2;&#x3068;&#x3057;&#x3066;&#x6CE8;&#x76EE;&#x3092;&#x96C6;&#x3081;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;">
+<meta name="twitter:image" value="https://thinkit.co.jp/sites/default/files/main_images/15893_kudu_logo.png">
+<meta name="twitter:image:width" value="90">
+<meta name="twitter:image:height" value="90">
+<link rel="publisher" href="http://www.impress.co.jp/">
+  <title>&#x5206;&#x6563;&#x578B;&#x30C7;&#x30FC;&#x30BF;&#x30B9;&#x30C8;&#x30A2;Apache Kudu&#x306E;&#x7279;&#x5FB4;&#x3068;&#x30E6;&#x30FC;&#x30B9;&#x30B1;&#x30FC;&#x30B9; | Think IT&#xFF08;&#x30B7;&#x30F3;&#x30AF;&#x30A4;&#x30C3;&#x30C8;&#xFF09;</title>
+  <link type="text/css" rel="stylesheet" href="https://thinkit.co.jp/sites/default/files/css/css_kShW4RPmRstZ3SpIC-ZvVGNFVAi0WEMuCnI0ZkYIaFw.css" media="all">
+<link type="text/css" rel="stylesheet" href="https://thinkit.co.jp/sites/default/files/css/css_qybKmOWmI0AzTNxMEzMhGIyT0EMS35ooRZYIk9qyM7M.css" media="all">
+<link type="text/css" rel="stylesheet" href="https://thinkit.co.jp/sites/default/files/css/css_ySkyIAAMRsXZksiHJGHTT_qwSv8Z9WJ-sxh4E6ykfEU.css" media="all">
+<link type="text/css" rel="stylesheet" href="https://thinkit.co.jp/sites/default/files/css/css_iTLSTUtqIjR7LUfjFye_IMG1oEBjIUr8A_b0sE-MxqU.css" media="all">
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-15893 node-type-article panel-layout-thinkit_default panel-region-contentmain">
+	
+
+
+    <section id="top-menu" class="visible-lg visible-md">
+  <div class="fixed-area container">
+  <div class="region region-top-menu">
+    <div id="block-menu-menu-top-menu" class="block block-menu first last odd block-menu-menu-top-menu" role="navigation">
+
+      <div class="block-content">
+        <div class="block__title block-title">
+          <a href="https://www.impress.co.jp/business.html#03_bm" target="_blank"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFQAAAAmCAMAAABtX0w5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADBQTFRFycbGUUtKgICAb2pp4uHhvr6+Ni4s1tTTAAAArquqn52c////IxgVkYyL8PDwg317d4vHOQAAAn1JREFUeNrslu2O7CAIhkUUW0V7/3d7XtB2PnJ2J5sz8+Mk20ymIvqAQGlD1U1Ge+8VdNs2fjcUzE0+4Wl8N7TIxm+Paco522DYfY+ljT36RCs5l9R7cgHLSl6KUWOMaQFSvxNMUQGNOL7J2WJrSZMzc7RtFputmhBd8DgVn53TbZ9Cd2PiYxkP0NtlM7LGOiZ0BX8Ao6Zzt0+hLMOCCX6AMp1/y9Mtx+XTDVqdJ+s4EKhzL2uDxEj50dOcT87pqU/HBfUzuq3tKsQ1dgO8Tla+gdIzND9C6Q7kBoMu6itP9zvozDD7QuY4Ha9EeloYTJ6IF556gPcHqMWU0DGcA0H2vOoCt575e+iV/fYAvc6fVylcwhkKfuGpWNyfoMk364xwcBO6uxDNhHILXz9sHtOS/6bKOV3jcS/guTNLX0Pp5txPn/2vVUglvR36D13q/4F+5NIPXL9Q6b2zKHdV6qQHJNXeMWAVElNjRL0fogItQYsV9sdQERYcmGMylCzobIUSGta17q2B0ZkU1SaYoNk35keCVyBBK9gGsYTAGATsCN328wUtNBotqLXdcEKrQwsR9ZYkB0wfh2kLay2AwjvsVz2GQ1MtF3QUd+L0NO0yoWFUgw53B46yGXLtkTUd2LP3LoyN2gzKSQdd0DDs+GJQPfJoaUK5pQU9lCqaGolpszZplGhB6YKG0NN+O36y4x+SGj6BiNHQHWpv/G6xszNkSPAXgUAUNKdKz8cXBLcMuU+Uv2WL+IdHXdDerkTZF0UST+MBKDdanhKsFk/Ubl4OniWFPBD4wl4p5AWCdyRqTGbFWEmZVi4tNtnPS4pmSaH7Wj2R/D6mn4D+EWAAejl4RS22Fx8AAAAASUVORK5CYII=" alt="&#x30A4;&#x30F3;&#x30D7;&#x30EC;&#x30B9; &#x30D3;&#x30B8;&#x30CD;&#x30B9;&#x30E1;&#x30C7;&#x30A3;&#x30A2;" title="&#x30A4;&#x30F3;&#x30D7;&#x30EC;&#x30B9;&#x306E;&#x30D3;&#x30B8;&#x30CD;&#x30B9;&#x5411;&#x3051;Web&#x30E1;&#x30C7;&#x30A3;&#x30A2;" width="84" height="38"></a>
+        </div>
+        <div class="gnavi-bm clearfix">
+          <ul class="gnavi-1">
+            <li class="gnavi-thinkit"><span title="Think IT">&#x30BD;&#x30D5;&#x30C8;&#x958B;&#x767A;</span></li>
+            <li class="gnavi-itl"><a href="http://it.impressbm.co.jp/?utm_source=thinkit.co.jp&amp;utm_medium=referral&amp;utm_campaign=global-navigation&amp;utm_content=thinkit" title="IT Leaders" target="_blank">&#x4F01;&#x696D;IT</a></li>
+            <li class="gnavi-ibl"><a href="https://b-library.impress.co.jp/?utm_source=thinkit.co.jp&amp;utm_medium=referral&amp;utm_campaign=global-navigation&amp;utm_content=thinkit" title="Impress Business Library" target="_blank">&#x88FD;&#x54C1;&#x5C0E;&#x5165;</a></li>
+          </ul>
+          <div class="gnavi-2">
+            <ul>
+              <li class="gnavi-webtan"><a href="https://webtan.impress.co.jp/?utm_source=thinkit.co.jp&amp;utm_medium=referral&amp;utm_campaign=global-navigation&amp;utm_content=thinkit" title="Web&#x62C5;&#x5F53;&#x8005;&#x30D5;&#x30A9;&#x30FC;&#x30E9;&#x30E0;" target="_blank">Web&#x62C5;&#x5F53;&#x8005;</a></li>
+              <li class="gnavi-nettan"><a href="https://netshop.impress.co.jp/?utm_source=thinkit.co.jp&amp;utm_medium=referral&amp;utm_campaign=global-navigation&amp;utm_content=thinkit" title="&#x30CD;&#x30C3;&#x30C8;&#x30B7;&#x30E7;&#x30C3;&#x30D7;&#x62C5;&#x5F53;&#x8005;&#x30D5;&#x30A9;&#x30FC;&#x30E9;&#x30E0;" target="_blank">EC&#x62C5;&#x5F53;&#x8005;</a></li>
+              <li class="gnavi-digitalx"><a href="https://dcross.impress.co.jp/?utm_source=thinkit.co.jp&amp;utm_medium=referral&amp;utm_campaign=global-navigation&amp;utm_content=thinkit" title="DIGITAL X" target="_blank">IoT&#x30FB;AI</a></li>
+              <li class="gnavi-cloudwatch"><a href="https://cloud.watch.impress.co.jp/?utm_source=thinkit.co.jp&amp;utm_medium=referral&amp;utm_campaign=global-navigation&amp;utm_content=thinkit" title="&#x30AF;&#x30E9;&#x30A6;&#x30C9; Watch" target="_blank">DC&#x30AF;&#x30E9;&#x30A6;&#x30C9;</a></li>
+              <li class="gnavi-ill"><a href="https://research.impress.co.jp/?utm_source=thinkit.co.jp&amp;utm_medium=referral&amp;utm_campaign=global-navigation&amp;utm_content=thinkit" title="&#x30A4;&#x30F3;&#x30D7;&#x30EC;&#x30B9;&#x7DCF;&#x5408;&#x7814;&#x7A76;&#x6240;" target="_blank">&#x7814;&#x7A76;&#x30FB;&#x8ABF;&#x67FB;</a></li>
+            </ul>
+            <ul>
+              <li class="gnavi-sgforum"><a href="https://sgforum.impress.co.jp/?utm_source=thinkit.co.jp&amp;utm_medium=referral&amp;utm_campaign=global-navigation&amp;utm_content=thinkit" title="SmartGrid&#x30D5;&#x30A9;&#x30FC;&#x30E9;&#x30E0;" target="_blank">&#x30A8;&#x30CD;&#x30EB;&#x30AE;&#x30FC;</a></li>
+              <li class="gnavi-drone"><a href="https://www.watch.impress.co.jp/drone/?utm_source=thinkit.co.jp&amp;utm_medium=referral&amp;utm_campaign=global-navigation&amp;utm_content=thinkit" title="&#x30C9;&#x30ED;&#x30FC;&#x30F3;&#x30B8;&#x30E3;&#x30FC;&#x30CA;&#x30EB;" target="_blank">&#x30C9;&#x30ED;&#x30FC;&#x30F3;</a></li>
+              <li class="gnavi-findit"><a href="https://find-it.jp/?utm_source=thinkit.co.jp&amp;utm_medium=referral&amp;utm_campaign=global-navigation&amp;utm_content=thinkit" title="Find-IT" target="_blank">IT&#x88FD;&#x54C1;&#x8CC7;&#x6599;</a></li>
+              <li class="gnavi-seminar"><a href="https://b-event.impress.co.jp/?utm_source=thinkit.co.jp&amp;utm_medium=referral&amp;utm_campaign=global-navigation&amp;utm_content=thinkit" title="&#x30A4;&#x30F3;&#x30D7;&#x30EC;&#x30B9;&#x30BB;&#x30DF;&#x30CA;&#x30FC;" target="_blank">&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x30FB;&#x30BB;&#x30DF;&#x30CA;&#x30FC;</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<header id="header" class="header" role="header">
+  
+<div class="visible-xs">
+  <nav class="navbar navbar-default navbar-inverse navbar-xs" role="navigation">
+    <div class="col-xs-6">
+      <div class="text-center">
+        <a class="offcanvas-toggle" data-toggle="offcanvas" data-target="#js-bootstrap-offcanvas">
+          <i class="fa fa-bars fa-2x"></i>
+          <span class="menu">&#x30E1;&#x30CB;&#x30E5;&#x30FC;</span>
+          <span class="sr-only">&#x30E1;&#x30CB;&#x30E5;&#x30FC;</span>
+        </a>
+      </div>
+    </div>
+    <div class="col-xs-12">
+      <div class="navbar-header">
+                <a href="https://thinkit.co.jp/">
+          <img src="https://thinkit.co.jp/sites/all/themes/radix_thinkit/logo.png" alt="&#x30AA;&#x30FC;&#x30D7;&#x30F3;&#x30BD;&#x30FC;&#x30B9;&#x6280;&#x8853;&#x306E;&#x5B9F;&#x8DF5;&#x6D3B;&#x7528;&#x30E1;&#x30C7;&#x30A3;&#x30A2;" title="&#x30AA;&#x30FC;&#x30D7;&#x30F3;&#x30BD;&#x30FC;&#x30B9;&#x6280;&#x8853;&#x306E;&#x5B9F;&#x8DF5;&#x6D3B;&#x7528;&#x30E1;&#x30C7;&#x30A3;&#x30A2;" id="logo" class="center-block">
+        </a>
+              </div>
+    </div>
+    <div class="col-xs-6">
+      <div class="text-center">
+        <a id="search-button">
+          <i class="fa fa-search fa-2x"></i>
+          <span class="menu">&#x8A18;&#x4E8B;&#x691C;&#x7D22;</span>
+          <span class="sr-only">&#x8A18;&#x4E8B;&#x691C;&#x7D22;</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<nav class="navbar navbar-default navbar-inverse navbar-offcanvas navbar-offcanvas-touch drawer-wrapper" role="navigation" id="js-bootstrap-offcanvas">
+  <div class="container">
+    <div class="navbar-header">
+            <a class="navbar-brand hidden-xs" href="https://thinkit.co.jp/">
+        <img src="https://thinkit.co.jp/sites/all/themes/radix_thinkit/logo.png" alt="&#x30AA;&#x30FC;&#x30D7;&#x30F3;&#x30BD;&#x30FC;&#x30B9;&#x6280;&#x8853;&#x306E;&#x5B9F;&#x8DF5;&#x6D3B;&#x7528;&#x30E1;&#x30C7;&#x30A3;&#x30A2;" title="&#x30AA;&#x30FC;&#x30D7;&#x30F3;&#x30BD;&#x30FC;&#x30B9;&#x6280;&#x8853;&#x306E;&#x5B9F;&#x8DF5;&#x6D3B;&#x7528;&#x30E1;&#x30C7;&#x30A3;&#x30A2;" id="logo">
+        </a>
+            <button type="button" class="close navbar-toggle offcanvas-toggle" data-toggle="offcanvas" data-target="#js-bootstrap-offcanvas" aria-label="Close">
+        <span aria-hidden="true">&#xD7;</span>
+      </button>
+    </div>
+    <div>
+      <div class="drawer-sns visible-xs">
+        <div><a href="http://www.facebook.com/thinkit.co.jp" title="Facebook"><i class="fa fa-facebook-official"></i></a></div>
+        <div><a href="https://twitter.com/thinkitcojp" title="Twitter"><i class="fa fa-twitter"></i></a></div>
+        <div><a href="http://thinkit.co.jp/rss.xml" title="RSS"><i class="fa fa-rss"></i></a></div>
+      </div>
+
+<div id="block-superfish-1" class="clear-block block block-superfish">
+
+      
+  <div class="content">
+    <ul id="superfish-1" class="menu sf-menu sf-menu-menu-category sf-horizontal sf-style-none sf-total-items-5 sf-parent-items-5 sf-single-items-0"><li id="menu-15965-1" class="first odd sf-item-1 sf-depth-1 sf-total-children-6 sf-parent-children-0 sf-single-children-6 menuparent"><a href="https://thinkit.co.jp/category/4502" title class="sf-depth-1 menuparent">IT&#x30A4;&#x30F3;&#x30D5;&#x30E9;</a><ul><li id="menu-17121-1" class="first odd sf-item-1 sf-depth-2 sf-no-children"><a href="https://thinkit.co.jp/category/4503" title class="sf-depth-2">&#x30B5;&#x30FC;&#x30D0;&#x30FC;</a></li><li id="menu-17122-1" class="middle even sf-item-2 sf-depth-2 sf-no-children"><a href="https://thinkit.co.jp/category/4504" title class="sf-depth-2">&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;</a></li><li id="menu-17123-1" class="middle odd sf-item-3 sf-depth-2 sf-no-children"><a href="https://thinkit.co.jp/category/4505" title class="sf-depth-2">&#x30B9;&#x30C8;&#x30EC;&#x30FC;&#x30B8;</a></li><li id="menu-17124-1" class="middle even sf-item-4 sf-depth-2 sf-no-children"><a href="https://thinkit.co.jp/category/4506" title class="sf-depth-2">&#x30AF;&#x30E9;&#x30A6;&#x30C9;</a></li><li id="menu-17125-1" class="middle odd sf-item-5 sf-depth-2 sf-no-children"><a href="https://thinkit.co.jp/category/4507" title class="sf-depth-2">&#x4EEE;&#x60F3;&#x5316;&#xFF0F;&#x30B3;&#x30F3;&#x30C6;&#x30CA;</a></li><li id="menu-17126-1" class="last even sf-item-6 sf-depth-2 sf-no-children"><a href="https://thinkit.co.jp/category/6911" title class="sf-depth-2">IoT&#xFF0F;&#x7D44;&#x307F;&#x8FBC;&#x307F;</a></li></ul></li><li id="menu-15966-1" class="middle even sf-item-2 sf-depth-1 sf-total-children-7 sf-parent-children-0 sf-single-children-7 menuparent"><a href="https://thinkit.co.jp/category/4508" title class="sf-depth-1 menuparent">&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x958B;&#x767A;</a><ul><li id="menu-17127-1" class="first odd sf-item-1 sf-depth-2 sf-no-children"><a href="https://thinkit.co.jp/category/4509" title class="sf-depth-2">OS</a></li><li id="menu-17128-1" class="middle even sf-item-2 sf-depth-2 sf-no-children"><a href="https://thinkit.co.jp/category/4510" title class="sf-depth-2">&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;</a></li><li id="menu-17129-1" class="middle odd sf-item-3 sf-depth-2 sf-no-children"><a href="https://thinkit.co.jp/category/4511" title class="sf-depth-2">&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;</a></li><li id="menu-17130-1" class="middle even sf-item-4 sf-depth-2 sf-no-children"><a href="https://thinkit.co.jp/category/4512" title class="sf-depth-2">&#x8A2D;&#x8A08;&#xFF0F;&#x624B;&#x6CD5;&#xFF0F;&#x30C6;&#x30B9;&#x30C8;</a></li><li id="menu-17131-1" class="middle odd sf-item-5 sf-depth-2 sf-no-children"><a href="https://thinkit.co.jp/category/4513" title class="sf-depth-2">&#x958B;&#x767A;&#x8A00;&#x8A9E;</a></li><li id="menu-17132-1" class="middle even sf-item-6 sf-depth-2 sf-no-children"><a href="https://thinkit.co.jp/category/4514" title class="sf-depth-2">&#x958B;&#x767A;&#x30C4;&#x30FC;&#x30EB;</a></li><li id="menu-17133-1" class="last odd sf-item-7 sf-depth-2 sf-no-children"><a href="https://thinkit.co.jp/category/4515" title class="sf-depth-2">Web&#x958B;&#x767A;</a></li></ul></li><li id="menu-15967-1" class="middle odd sf-item-3 sf-depth-1 sf-total-children-6 sf-parent-children-0 sf-single-children-6 menuparent"><a href="https://thinkit.co.jp/category/4516" title class="sf-depth-1 menuparent">&#x696D;&#x52D9;&#x30A2;&#x30D7;&#x30EA;</a><ul><li id="menu-17134-1" class="first odd sf-item-1 sf-depth-2 sf-no-children"><a href="https://thinkit.co.jp/category/4517" title class="sf-depth-2">&#x30C7;&#x30FC;&#x30BF;&#x89E3;&#x6790;</a></li><li id="menu-17135-1" class="middle even sf-item-2 sf-depth-2 sf-no-children"><a href="https://thinkit.co.jp/category/4518" title class="sf-depth-2">&#x30E2;&#x30D0;&#x30A4;&#x30EB;</a></li><li id="menu-17136-1" class="middle odd sf-item-3 sf-depth-2 sf-no-children"><a href="https://thinkit.co.jp/category/4519" title class="sf-depth-2">CRM&#xFF0F;ERP</a></li><li id="menu-17137-1" class="middle even sf-item-4 sf-depth-2 sf-no-children"><a href="https://thinkit.co.jp/category/4520" title class="sf-depth-2">OSS</a></li><li id="menu-17138-1" class="middle odd sf-item-5 sf-depth-2 sf-no-children"><a href="https://thinkit.co.jp/category/5755" title class="sf-depth-2">VR&#xFF0F;AR</a></li><li id="menu-17139-1" class="last even sf-item-6 sf-depth-2 sf-no-children"><a href="https://thinkit.co.jp/category/6904" title class="sf-depth-2">AI&#x30FB;&#x4EBA;&#x5DE5;&#x77E5;&#x80FD;</a></li></ul></li><li id="menu-15968-1" class="middle even sf-item-4 sf-depth-1 sf-total-children-5 sf-parent-children-0 sf-single-children-5 menuparent"><a href="https://thinkit.co.jp/category/4521" title class="sf-depth-1 menuparent">&#x904B;&#x7528;&#x30FB;&#x7BA1;&#x7406;</a><ul><li id="menu-17140-1" class="first odd sf-item-1 sf-depth-2 sf-no-children"><a href="https://thinkit.co.jp/category/4522" title class="sf-depth-2">&#x30D7;&#x30ED;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x7BA1;&#x7406;</a></li><li id="menu-17141-1" class="middle even sf-item-2 sf-depth-2 sf-no-children"><a href="https://thinkit.co.jp/category/4523" title class="sf-depth-2">&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x904B;&#x7528;</a></li><li id="menu-17142-1" class="middle odd sf-item-3 sf-depth-2 sf-no-children"><a href="https://thinkit.co.jp/category/4524" title class="sf-depth-2">BCP&#xFF0F;DR</a></li><li id="menu-17143-1" class="middle even sf-item-4 sf-depth-2 sf-no-children"><a href="https://thinkit.co.jp/category/4525" title class="sf-depth-2">&#x904B;&#x7528;&#x76E3;&#x8996;</a></li><li id="menu-17144-1" class="last odd sf-item-5 sf-depth-2 sf-no-children"><a href="https://thinkit.co.jp/category/4526" title class="sf-depth-2">&#x30BB;&#x30AD;&#x30E5;&#x30EA;&#x30C6;&#x30A3;</a></li></ul></li><li id="menu-16867-1" class="last odd sf-item-5 sf-depth-1 sf-total-children-6 sf-parent-children-0 sf-single-children-6 menuparent"><a href="https://thinkit.co.jp/category/6905" title class="sf-depth-1 menuparent">&#x50CD;&#x304D;&#x65B9;</a><ul><li id="menu-17145-1" class="first odd sf-item-1 sf-depth-2 sf-no-children"><a href="https://thinkit.co.jp/category/5546" title class="sf-depth-2">&#x8CC7;&#x683C;&#x30FB;&#x8A66;&#x9A13;</a></li><li id="menu-17146-1" class="middle even sf-item-2 sf-depth-2 sf-no-children"><a href="https://thinkit.co.jp/category/6906" title class="sf-depth-2">&#x30AD;&#x30E3;&#x30EA;&#x30A2;&#x30FB;&#x4EBA;&#x6750;</a></li><li id="menu-17147-1" class="middle odd sf-item-3 sf-depth-2 sf-no-children"><a href="https://thinkit.co.jp/category/6907" title class="sf-depth-2">&#x30D5;&#x30EA;&#x30FC;&#x30E9;&#x30F3;&#x30B9;&#xFF0F;&#x8D77;&#x696D;</a></li><li id="menu-17148-1" class="middle even sf-item-4 sf-depth-2 sf-no-children"><a href="https://thinkit.co.jp/category/6908" title class="sf-depth-2">&#x30E9;&#x30A4;&#x30D5;&#x30CF;&#x30C3;&#x30AF;</a></li><li id="menu-17149-1" class="middle odd sf-item-5 sf-depth-2 sf-no-children"><a href="https://thinkit.co.jp/category/6909" title class="sf-depth-2">&#x6559;&#x80B2;</a></li><li id="menu-17150-1" class="last even sf-item-6 sf-depth-2 sf-no-children"><a href="https://thinkit.co.jp/category/6910" title class="sf-depth-2">&#x5236;&#x5EA6;&#x30FB;&#x6CD5;&#x5F8B;</a></li></ul></li></ul>  </div>
+</div>
+
+      <span class="hidden-xs">
+              </span>
+<ul class="nav navbar-ichiran hidden-xs hidden-sm"><li class="menu-16167 first"><a href="https://thinkit.co.jp/category/top">&#x30AB;&#x30C6;&#x30B4;&#x30EA;&#x4E00;&#x89A7;</a></li>
+<li class="menu-16169 last"><a href="https://thinkit.co.jp/series/top">&#x9023;&#x8F09;&#x4E00;&#x89A7;</a></li>
+</ul><ul class="nav navbar-nav visible-xs drawer drawer-sub"><li class="menu-16167 first"><a href="https://thinkit.co.jp/category/top">&#x30AB;&#x30C6;&#x30B4;&#x30EA;&#x4E00;&#x89A7;</a></li>
+<li class="menu-16169 last"><a href="https://thinkit.co.jp/series/top">&#x9023;&#x8F09;&#x4E00;&#x89A7;</a></li>
+</ul><ul class="nav navbar-nav visible-xs drawer drawer-sub drawer-sub-sub"><li class="menu-16988 first"><a href="https://thinkit.co.jp/category/6904" title>AI&#x30FB;&#x4EBA;&#x5DE5;&#x77E5;&#x80FD;</a></li>
+<li class="menu-15948"><a href="https://thinkit.co.jp/tag/4262" title>Kubernetes</a></li>
+<li class="menu-15947"><a href="https://thinkit.co.jp/tag/3072" title>OpenStack</a></li>
+<li class="menu-15945"><a href="https://thinkit.co.jp/type/4532" title>&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x30EC;&#x30DD;&#x30FC;&#x30C8;</a></li>
+<li class="menu-15951"><a href="https://thinkit.co.jp/type/4531" title>&#x30A4;&#x30F3;&#x30BF;&#x30D3;&#x30E5;&#x30FC;</a></li>
+<li class="menu-16947"><a href="https://thinkit.co.jp/tag/4291" title>VR</a></li>
+<li class="menu-16987"><a href="https://thinkit.co.jp/lifehack" title>&#x30DE;&#x30F3;&#x30AC;</a></li>
+<li class="menu-17001"><a href="https://thinkit.co.jp/tibooks" title>Think IT&#x306E;&#x66F8;&#x7C4D;</a></li>
+<li class="menu-17112 last"><a href="https://thinkit.co.jp/OSSfm" title>OSSfm</a></li>
+</ul>     
+    </div>
+  </div>
+</nav>
+<section id="hidden-search-box" style="display: none;">
+    </section>
+
+
+  <div class="navbar-sub visible-lg visible-md visible-sm">
+  <div class="container">
+    <div class="navbar-sub-cell hot-words hidden-sm">
+<ul class="links"><li class="menu-16988 first"><a href="https://thinkit.co.jp/category/6904" title>AI&#x30FB;&#x4EBA;&#x5DE5;&#x77E5;&#x80FD;</a></li>
+<li class="menu-15948"><a href="https://thinkit.co.jp/tag/4262" title>Kubernetes</a></li>
+<li class="menu-15947"><a href="https://thinkit.co.jp/tag/3072" title>OpenStack</a></li>
+<li class="menu-15945"><a href="https://thinkit.co.jp/type/4532" title>&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x30EC;&#x30DD;&#x30FC;&#x30C8;</a></li>
+<li class="menu-15951"><a href="https://thinkit.co.jp/type/4531" title>&#x30A4;&#x30F3;&#x30BF;&#x30D3;&#x30E5;&#x30FC;</a></li>
+<li class="menu-16947"><a href="https://thinkit.co.jp/tag/4291" title>VR</a></li>
+<li class="menu-16987"><a href="https://thinkit.co.jp/lifehack" title>&#x30DE;&#x30F3;&#x30AC;</a></li>
+<li class="menu-17001"><a href="https://thinkit.co.jp/tibooks" title>Think IT&#x306E;&#x66F8;&#x7C4D;</a></li>
+<li class="menu-17112 last"><a href="https://thinkit.co.jp/OSSfm" title>OSSfm</a></li>
+</ul>    </div>
+    <div class="navbar-sub-cell sns-icons">
+      <ul class="nav nav-pills pull-right">
+        <li><a href="http://www.facebook.com/thinkit.co.jp" title="Facebook" target="_blank"><i class="fa fa-facebook-official"></i></a></li>
+        <li><a href="https://twitter.com/thinkitcojp" title="Twitter" target="_blank"><i class="fa fa-twitter"></i></a></li>
+        <li><a href="http://thinkit.co.jp/rss.xml" title="RSS"><i class="fa fa-rss"></i></a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+  
+  <div id="div-gpt-ad-1535625745021-0">
+    
+  </div>
+</header>
+
+<div id="main-wrapper">
+  <div id="main" class="main">
+    <div class="container">
+      <div class="row container">
+        <div class="col-md-24 radix-layouts-topcol">
+            <div class="region region-head-ad">
+    <div id="block-block-83" class="clear-block block block-block">
+
+      
+  <div class="content">
+    <div class="tex2jax">
+<div id="div-gpt-ad-1450940771091-0" style="height:90px; width:728px;">
+
+</div></div>  </div>
+</div>
+  </div>
+        </div>
+      </div>
+
+          </div>
+    <div id="content" class="container">
+      <div id="page-header">
+                      </div>
+      <div class="container-fluid">
+
+        <div class="row container">
+          <div class="col-md-16 radix-layouts-content">
+                              <div id="breadcrumb" class="visible-desktop">
+                  <h2 class="element-invisible">&#x73FE;&#x5728;&#x5730;</h2><div class="breadcrumb"><a href="https://thinkit.co.jp/">Think IT</a> &gt; <a href="https://thinkit.co.jp/category/top">&#x30AB;&#x30C6;&#x30B4;&#x30EA;&#x4E00;&#x89A7;</a></div>                </div>
+                              <div class="region region-top-ad">
+    <div id="block-block-84" class="clear-block block block-block">
+
+      
+  <div class="content">
+    <div class="tex2jax"><div class="PR">
+	<span class="block_title">PR</span>
+	<ul>
+
+		<li class="first" id="div-gpt-ad-1450940771091-4" style="width:468px; height:20px; overflow:hidden;">
+			
+		</li>
+
+		<li class="second" id="div-gpt-ad-1450940771091-5" style="width:468px; height:20px; overflow:hidden;">
+			
+		</li>
+	</ul>
+</div></div>  </div>
+</div>
+  </div>
+
+                <div class="region region-content">
+    <div id="block-system-main" class="clear-block block block-system">
+
+      
+  <div class="content">
+    
+<div class="thinkit_default clearfix thinkit-default" id="article">
+
+  <article class="node">
+    <div class="panel-pane pane-entity-view pane-taxonomy-term">
+  
+      
+  
+  <div class="pane-content">
+    
+
+<div class="taxonomy-term vocabulary-serial-article view-mode-serial_header clearfix">
+    <div class="row">
+    <div class="col-sm-24 ">
+          </div>
+  </div>
+</div>
+
+
+
+  </div>
+
+  
+  </div>
+<div class="panel-pane pane-entity-view pane-node">
+  
+      
+  
+  <div class="pane-content">
+    
+
+<div class="node node-article node-promoted node-sticky view-mode-full clearfix">
+    <div class="row">
+    <div class="col-sm-24 ">
+      <div class="category-label"><a href="https://thinkit.co.jp/type/4529">&#x6280;&#x8853;&#x89E3;&#x8AAC;</a></div><div class="field field-name-view-serial-count field-type-ds field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even"><div class="field field-label-inline clearfix"><div class="field-label">&#x9023;&#x8F09;&#xA0;[&#x7B2C;1&#x56DE;]&#xA0;:</div>&#xA0;&#xA0;<a href="https://thinkit.co.jp/series/8766">&#x30E6;&#x30FC;&#x30B9;&#x30B1;&#x30FC;&#x30B9;&#x3067;&#x5FB9;&#x5E95;&#x691C;&#x8A3C;&#xFF01; Apache Kudu&#x306B;&#x3088;&#x308B;IoT&#x6642;&#x4EE3;&#x306E;&#x30D3;&#x30C3;&#x30B0;&#x30C7;&#x30FC;&#x30BF;&#x6D3B;&#x7528;</a></div></div>
+      </div>
+</div>
+<div class="field field-name-title field-type-ds field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even"><h1 class="page-header">&#x5206;&#x6563;&#x578B;&#x30C7;&#x30FC;&#x30BF;&#x30B9;&#x30C8;&#x30A2;Apache Kudu&#x306E;&#x7279;&#x5FB4;&#x3068;&#x30E6;&#x30FC;&#x30B9;&#x30B1;&#x30FC;&#x30B9;</h1></div>
+      </div>
+</div>
+<div id="node-article-full-group-aside-attribute" class="aside_attribute group_aside_attribute field-group-div"><div class="field field-name-created-date field-type-ds field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even"><span class="created-date"><i class="fa fa-clock-o"></i> 2019&#x5E74;3&#x6708;29&#x65E5;(&#x91D1;)</span></div>
+      </div>
+</div>
+<span class="author"><i class="fa fa-user"></i> <span class="person"><a href="https://thinkit.co.jp/author/10002">&#x4F0A;&#x85E4; &#x96C5;&#x535A;</a></span></span></div><div class="field field-name-field-main-image field-type-image field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even"><img class="img-responsive" src="https://thinkit.co.jp/sites/default/files/styles/main_image_730x/public/main_images/15893_kudu_logo.png?itok=yjENKxAo" width="650" height="277" alt></div>
+      </div>
+</div>
+<div class="easy_social_box clearfix horizontal easy_social_lang_ja">
+            <div class="easy_social-widget easy_social-widget-twitter first"><a href="http://twitter.com/share" class="twitter-share-button" data-url="https://thinkit.co.jp/article/15893" data-count="horizontal" data-lang="ja" data-via="thinkitcojp" data-related=":" data-text="&#x5206;&#x6563;&#x578B;&#x30C7;&#x30FC;&#x30BF;&#x30B9;&#x30C8;&#x30A2;Apache Kudu&#x306E;&#x7279;&#x5FB4;&#x3068;&#x30E6;&#x30FC;&#x30B9;&#x30B1;&#x30FC;&#x30B9;">Tweet</a></div>
+          <div class="easy_social-widget easy_social-widget-facebook"><fb:like href="https://thinkit.co.jp/article/15893" send="true" layout="button_count" width="100" show_faces="false" action="like" colorscheme="light" font></fb:like></div>
+          <div class="easy_social-widget easy_social-widget-googleplus"><div class="g-plusone" data-size="medium" data-annotation="bubble" data-href="https://thinkit.co.jp/article/15893"></div></div>
+          <div class="easy_social-widget easy_social-widget-hatena last">  <a href="https://thinkit.co.jp/article/15893" class="hatena-bookmark-button" data-hatena-bookmark-title="&#x5206;&#x6563;&#x578B;&#x30C7;&#x30FC;&#x30BF;&#x30B9;&#x30C8;&#x30A2;Apache Kudu&#x306E;&#x7279;&#x5FB4;&#x3068;&#x30E6;&#x30FC;&#x30B9;&#x30B1;&#x30FC;&#x30B9;" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja" title="&#x3053;&#x306E;&#x8A18;&#x4E8B;&#x3092;&#x306F;&#x3066;&#x306A;&#x30D6;&#x30C3;&#x30AF;&#x30DE;&#x30FC;&#x30AF;&#x306B;&#x8FFD;&#x52A0;">
+  <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="&#x3053;&#x306E;&#x30A8;&#x30F3;&#x30C8;&#x30EA;&#x30FC;&#x3092;&#x306F;&#x3066;&#x306A;&#x30D6;&#x30C3;&#x30AF;&#x30DE;&#x30FC;&#x30AF;&#x306B;&#x8FFD;&#x52A0;" width="20" height="20" style="border: none;">
+  </a></div>
+  </div> <div class="field field-name-body field-type-text-with-summary field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even"><div class="tex2jax"><h1>&#x306F;&#x3058;&#x3081;&#x306B;</h1>
+<p>&#x30CD;&#x30C3;&#x30C8;&#x30EF;&#x30FC;&#x30AF;&#x306B;&#x63A5;&#x7D9A;&#x3055;&#x308C;&#x305F;&#x30C7;&#x30D0;&#x30A4;&#x30B9;&#x306E;&#x666E;&#x53CA;&#x306B;&#x3088;&#x308A;&#x3001;&#x3055;&#x307E;&#x3056;&#x307E;&#x306A;&#x6A5F;&#x5668;&#x304C;&#x5927;&#x91CF;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x751F;&#x6210;&#x3059;&#x308B;IoT&#xFF08;Internet of Things&#xFF09;&#x304C;&#x9032;&#x5C55;&#x3057;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;&#x307E;&#x305F;&#x3001;AI&#x30FB;&#x6A5F;&#x68B0;&#x5B66;&#x7FD2;&#x6280;&#x8853;&#x306E;&#x767A;&#x5C55;&#x306B;&#x3088;&#x308A;&#x3001;&#x3053;&#x306E;&#x5927;&#x91CF;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x6D3B;&#x7528;&#x3057;&#x305F;&#x30C7;&#x30FC;&#x30BF;&#x5206;&#x6790;&#x304C;&#x6CE8;&#x76EE;&#x3092;&#x96C6;&#x3081;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;</p>
+<p>&#x3053;&#x306E;&#x3088;&#x3046;&#x306A;&#x80CC;&#x666F;&#x304B;&#x3089;&#x3001;&#x60C5;&#x5831;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x304C;&#x53CE;&#x96C6;&#x30FB;&#x84C4;&#x7A4D;&#x3059;&#x3079;&#x304D;&#x30C7;&#x30FC;&#x30BF;&#x91CF;&#x306F;&#x6025;&#x6FC0;&#x306B;&#x5897;&#x52A0;&#x3057;&#x3066;&#x304A;&#x308A;&#x3001;&#x304B;&#x3064;&#x84C4;&#x7A4D;&#x3057;&#x305F;&#x5927;&#x91CF;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x52B9;&#x7387;&#x3088;&#x304F;&#x5206;&#x6790;&#x3059;&#x308B;&#x3053;&#x3068;&#x304C;&#x6C42;&#x3081;&#x3089;&#x308C;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;Apache Kudu&#xFF08;&#x4EE5;&#x964D;&#x3001;Kudu&#xFF09;&#x306F;&#x3053;&#x306E;&#x3088;&#x3046;&#x306A;&#x30D3;&#x30C3;&#x30B0;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x84C4;&#x7A4D;&#x3068;&#x5206;&#x6790;&#x306B;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x30B9;&#x30C8;&#x30A2;&#x3068;&#x3057;&#x3066;&#x6CE8;&#x76EE;&#x3092;&#x96C6;&#x3081;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;</p>
+<h1>Kudu&#x3068;&#x306F;</h1>
+<p>Kudu&#x306F;&#x9AD8;&#x3044;&#x30B9;&#x30B1;&#x30FC;&#x30E9;&#x30D3;&#x30EA;&#x30C6;&#x30A3;&#x3092;&#x6301;&#x3064;&#x5206;&#x6563;&#x578B;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x30B9;&#x30C8;&#x30A2;&#x3067;&#x3042;&#x308A;&#x3001;&#x591A;&#x6570;&#x306E;&#x30DE;&#x30B7;&#x30F3;&#x3067;&#x30AF;&#x30E9;&#x30B9;&#x30BF;&#x3092;&#x69CB;&#x6210;&#x3059;&#x308B;&#x3053;&#x3068;&#x3067;&#x5927;&#x91CF;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x6271;&#x3046;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;Kudu&#x306F;Cloudera&#x793E;&#x306B;&#x3088;&#x3063;&#x3066;&#x958B;&#x767A;&#x3055;&#x308C;&#x3001;2015&#x5E74;&#x306B;OSS&#x3068;&#x3057;&#x3066;&#x516C;&#x958B;&#x3055;&#x308C;&#x307E;&#x3057;&#x305F;&#x3002;</p>
+<p>Kudu&#x306F;&#x30AF;&#x30E9;&#x30B9;&#x30BF;&#x3092;&#x69CB;&#x6210;&#x3059;&#x308B;&#x30DE;&#x30B7;&#x30F3;&#x306E;&#x53F0;&#x6570;&#x3092;&#x5897;&#x3084;&#x305B;&#x3070;&#x5897;&#x3084;&#x3059;&#x307B;&#x3069;&#x3001;&#x5BB9;&#x91CF;&#x3068;&#x6027;&#x80FD;&#x304C;&#x30B9;&#x30B1;&#x30FC;&#x30EB;&#x30A2;&#x30A6;&#x30C8;&#x3057;&#x307E;&#x3059;&#x3002;Cloudera&#x793E;&#x306B;&#x3088;&#x308B;&#x3068;&#x8A2D;&#x8A08;&#x4E0A;&#x306F;&#x6700;&#x5927;&#x3067;1,000&#x30CE;&#x30FC;&#x30C9;&#x8D85;&#x3001;&#x6570;&#x5341;PB&#x307E;&#x3067;&#x30B9;&#x30B1;&#x30FC;&#x30EB;&#x3067;&#x304D;&#x3001;&#x79D2;&#x9593;&#x6570;&#x767E;&#x4E07;&#x306E;&#x30EA;&#x30FC;&#x30C9;/&#x30E9;&#x30A4;&#x30C8;&#x304C;&#x53EF;&#x80FD;&#x306B;&#x306A;&#x308B;&#x305D;&#x3046;&#x3067;&#x3059;&#xFF08;&#x53C2;&#x8003;&#xFF1A;<a href="https://www.slideshare.net/Cloudera_jp/kudu-as-an-analytic-database/">Apache Kudu&#x3092;&#x4F7F;&#x3063;&#x305F;&#x5206;&#x6790;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x306E;&#x88CF;&#x5074;</a>&#xFF09;&#x3002;&#x307E;&#x305F;&#x3001;Kudu&#x306F;&#x9AD8;&#x3044;&#x53EF;&#x7528;&#x6027;&#x3092;&#x6301;&#x3061;&#x3001;&#x4E00;&#x90E8;&#x306E;&#x30DE;&#x30B7;&#x30F3;&#x306B;&#x969C;&#x5BB3;&#x304C;&#x767A;&#x751F;&#x3057;&#x3066;&#x3082;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x5931;&#x3046;&#x3053;&#x3068;&#x306A;&#x304F;&#x7A3C;&#x50CD;&#x3057;&#x7D9A;&#x3051;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;</p>
+<h1>&#x30D3;&#x30C3;&#x30B0;&#x30C7;&#x30FC;&#x30BF;&#x95A2;&#x9023;&#x30C7;&#x30FC;&#x30BF;&#x30B9;&#x30C8;&#x30A2;&#x306B;&#x304A;&#x3051;&#x308B;Kudu&#x306E;&#x4F4D;&#x7F6E;&#x3065;&#x3051;</h1>
+<p>&#x30D3;&#x30C3;&#x30B0;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x683C;&#x7D0D;&#x306B;&#x4F7F;&#x7528;&#x3055;&#x308C;&#x308B;&#x4E3B;&#x8981;&#x306A;&#x30C7;&#x30FC;&#x30BF;&#x30B9;&#x30C8;&#x30A2;&#x306E;&#x4F4D;&#x7F6E;&#x3065;&#x3051;&#x3092;&#x56F3;1&#x306B;&#x793A;&#x3057;&#x307E;&#x3059;&#x3002;</p>
+<div class="image-box">
+<img src="https://thinkit.co.jp/sites/default/files/article_node/15893_kudu_01_01.png" alt="&#x56F3;1&#xFF1A;&#x30D3;&#x30C3;&#x30B0;&#x30C7;&#x30FC;&#x30BF;&#x95A2;&#x9023;&#x30C7;&#x30FC;&#x30BF;&#x30B9;&#x30C8;&#x30A2;&#x306E;&#x4F4D;&#x7F6E;&#x4ED8;&#x3051;" style="width:600px;"><div class="caption">&#x56F3;1&#xFF1A;&#x30D3;&#x30C3;&#x30B0;&#x30C7;&#x30FC;&#x30BF;&#x95A2;&#x9023;&#x30C7;&#x30FC;&#x30BF;&#x30B9;&#x30C8;&#x30A2;&#x306E;&#x4F4D;&#x7F6E;&#x4ED8;&#x3051;</div>
+</div>
+<p>&#x4E00;&#x822C;&#x7684;&#x306B;&#x3001;&#x9AD8;&#x983B;&#x5EA6;&#x306E;&#x683C;&#x7D0D;&#x30FB;&#x53C2;&#x7167;&#x304C;&#x5FC5;&#x8981;&#x306A;&#x30AA;&#x30DA;&#x30EC;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x7528;&#x9014;&#x3067;&#x306F;&#x3001;&#x6C4E;&#x7528;RDB&#x3084;NoSQL&#x304C;&#x9069;&#x3057;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;&#x5927;&#x91CF;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x53C2;&#x7167;&#x304C;&#x5FC5;&#x8981;&#x306A;&#x5206;&#x6790;&#x7528;&#x9014;&#x3067;&#x306F;&#x3001;&#x30C7;&#x30FC;&#x30BF;&#x30A6;&#x30A7;&#x30A2;&#x30CF;&#x30A6;&#x30B9;&#x3084;Hadoop&#xFF08;&#x3067;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x5206;&#x6563;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x306E;HDFS&#xFF09;&#x304C;&#x9069;&#x3057;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;Kudu&#x306F;&#x8868;&#x5F62;&#x5F0F;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x6271;&#x3044;&#x3001;&#x9AD8;&#x983B;&#x5EA6;&#x306E;&#x683C;&#x7D0D;&#x30FB;&#x53C2;&#x7167;&#x3068;&#x5927;&#x91CF;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x53C2;&#x7167;&#x306E;&#x4E21;&#x65B9;&#x306E;&#x51E6;&#x7406;&#x306B;&#x512A;&#x308C;&#x3066;&#x3044;&#x308B;HTAP&#xFF08;Hybrid Transactional/Analytic Processing&#xFF09;&#x3068;&#x3044;&#x3046;&#x5206;&#x91CE;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x30B9;&#x30C8;&#x30A2;&#x3067;&#x3059;&#x3002;</p>
+<p>&#x30D3;&#x30C3;&#x30B0;&#x30C7;&#x30FC;&#x30BF;&#x51E6;&#x7406;&#x306E;&#x5206;&#x91CE;&#x3067;&#x306F;Hadoop&#x3092;&#x4E2D;&#x5FC3;&#x3068;&#x3057;&#x305F;OSS&#x304C;&#x30C7;&#x30D5;&#x30A1;&#x30AF;&#x30C8;&#x30B9;&#x30BF;&#x30F3;&#x30C0;&#x30FC;&#x30C9;&#x3068;&#x306A;&#x3063;&#x3066;&#x304A;&#x308A;&#x3001;Kudu&#x3082;Hadoop&#x30A8;&#x30B3;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#xFF08;Hadoop&#x3068;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;&#x3066;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x3053;&#x3068;&#x304C;&#x591A;&#x3044;OSS&#x3092;&#x6307;&#x3059;&#xFF09;&#x306B;&#x9069;&#x5408;&#x3059;&#x308B;&#x3088;&#x3046;&#x306B;&#x8A2D;&#x8A08;&#x3055;&#x308C;&#x305F;&#x30C7;&#x30FC;&#x30BF;&#x30B9;&#x30C8;&#x30A2;&#x3067;&#x3059;&#x3002;&#x305D;&#x306E;&#x305F;&#x3081;&#x3001;Hadoop&#x3067;&#x4F7F;&#x7528;&#x3055;&#x308C;&#x308B;HDFS&#x3084;HBase&#x3068;&#x3069;&#x3046;&#x4F7F;&#x3044;&#x5206;&#x3051;&#x308B;&#x304B;&#x304C;&#x91CD;&#x8981;&#x3068;&#x306A;&#x308A;&#x307E;&#x3059;&#x3002;</p>
+<h1>HDFS / HBase / Kudu &#x306E;&#x6BD4;&#x8F03;</h1>
+<p>Hadoop&#x5411;&#x3051;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x30B9;&#x30C8;&#x30A2;&#x3067;&#x3042;&#x308B;&#x3001;HDFS&#x3001;HBase&#x3001;Kudu&#x306E;&#x6BD4;&#x8F03;&#x3092;&#x4EE5;&#x4E0B;&#x306B;&#x793A;&#x3057;&#x307E;&#x3059;&#x3002;</p>
+<h2>&#x6A5F;&#x80FD;&#x9762;&#x306E;&#x6BD4;&#x8F03;</h2>
+<p>&#x307E;&#x305A;&#x306F;&#x6A5F;&#x80FD;&#x9762;&#x306E;&#x6BD4;&#x8F03;&#x3092;&#x8868;1&#x306B;&#x793A;&#x3057;&#x307E;&#x3059;&#x3002;</p>
+<div class="image-box">
+<img src="https://thinkit.co.jp/sites/default/files/article_node/15893_kudu_01_02.png" alt="&#x8868;1&#xFF1A;&#x6A5F;&#x80FD;&#x9762;&#x306E;&#x6BD4;&#x8F03;" style="width:600px;"><div class="caption">&#x8868;1&#xFF1A;&#x6A5F;&#x80FD;&#x9762;&#x306E;&#x6BD4;&#x8F03;</div>
+</div>
+<h3>&#x30C7;&#x30FC;&#x30BF;&#x30E2;&#x30C7;&#x30EB;</h3>
+<p>HDFS&#x81EA;&#x4F53;&#x306F;&#x305F;&#x3060;&#x306E;&#x5206;&#x6563;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x3067;&#x3059;&#x304C;&#x3001;&#x30B9;&#x30AD;&#x30FC;&#x30DE;&#x3092;&#x7BA1;&#x7406;&#x3059;&#x308B;Hive&#x30E1;&#x30BF;&#x30B9;&#x30C8;&#x30A2;&#x3092;&#x5C0E;&#x5165;&#x3059;&#x308B;&#x3053;&#x3068;&#x3067;&#x3001;HDFS&#x4E0A;&#x306E;CSV&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306A;&#x3069;&#x3092;&#x8868;&#x5F62;&#x5F0F;&#x3067;&#x6271;&#x3046;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;&#x307E;&#x305F;&#x3001;&#x5217;&#x6307;&#x5411;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30C3;&#x30C8;&#x3067;&#x3042;&#x308B;Parquet&#x3084;ORC&#x3092;&#x5C0E;&#x5165;&#x3059;&#x308B;&#x3053;&#x3068;&#x3067;&#x3001;DWH&#x306E;&#x3088;&#x3046;&#x306B;&#x5927;&#x91CF;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x9AD8;&#x901F;&#x306B;&#x53C2;&#x7167;&#x3059;&#x308B;&#x3053;&#x3068;&#x304C;&#x53EF;&#x80FD;&#x3067;&#x3059;&#x3002;HBase&#x306E;&#x30EF;&#x30A4;&#x30C9;&#x30AB;&#x30E9;&#x30E0;&#x5F62;&#x5F0F;&#x306F;&#x4E00;&#x898B;&#x3059;&#x308B;&#x3068;&#x8868;&#x5F62;&#x5F0F;&#x306E;&#x3088;&#x3046;&#x306B;&#x3082;&#x898B;&#x3048;&#x307E;&#x3059;&#x304C;&#x3001;&#x5B9F;&#x969B;&#x306F;&#x30AD;&#x30FC;&#x3068;&#x30D0;&#x30EA;&#x30E5;&#x30FC;&#x3067;&#x69CB;&#x6210;&#x3055;&#x308C;&#x308B;&#x30AD;&#x30FC;&#x30D0;&#x30EA;&#x30E5;&#x30FC;&#x30B9;&#x30C8;&#x30A2;&#x3067;&#x3059;&#x3002;Kudu&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x30E2;&#x30C7;&#x30EB;&#x306F;&#x8868;&#x5F62;&#x5F0F;&#x3067;&#x3042;&#x308A;&#x3001;HDFS&#x306B;Hive&#x30E1;&#x30BF;&#x30B9;&#x30C8;&#x30A2;&#x3092;&#x5C0E;&#x5165;&#x3057;&#x305F;&#x5834;&#x5408;&#x3068;&#x4F3C;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;</p>
+<h3>&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x66F4;&#x65B0;&#x5358;&#x4F4D;</h3>
+<p>HDFS&#x306F;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x306A;&#x306E;&#x3067;&#x3001;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x66F4;&#x65B0;&#x3059;&#x308B;&#x3068;&#x304D;&#x306F;HDFS&#x306E;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x5185;&#x306E;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x307E;&#x308B;&#x3054;&#x3068;&#x5165;&#x308C;&#x66FF;&#x3048;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308A;&#x307E;&#x3059;&#x3002;Hive&#x306E;&#x30C8;&#x30E9;&#x30F3;&#x30B6;&#x30AF;&#x30B7;&#x30E7;&#x30CA;&#x30EB;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x6A5F;&#x80FD;&#x3092;&#x6709;&#x52B9;&#x306B;&#x3059;&#x308C;&#x3070;&#x3001;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x5358;&#x4F4D;&#x306E;&#x8FFD;&#x52A0;&#x30FB;&#x66F4;&#x65B0;&#x30FB;&#x524A;&#x9664;&#x3082;&#x53EF;&#x80FD;&#x3068;&#x306A;&#x308A;&#x307E;&#x3059;&#x304C;&#x3001;&#x3044;&#x304F;&#x3064;&#x304B;&#x306E;&#x5236;&#x9650;&#x304C;&#x3042;&#x308B;&#x305F;&#x3081;&#x73FE;&#x72B6;&#x3067;&#x306F;&#x3042;&#x307E;&#x308A;&#x4F7F;&#x7528;&#x3055;&#x308C;&#x3066;&#x3044;&#x307E;&#x305B;&#x3093;&#x3002;&#x4E00;&#x65B9;HBase&#x3068;Kudu&#x306F;&#x30EC;&#x30B3;&#x30FC;&#x30C9;1&#x884C;&#x3054;&#x3068;&#x306E;&#x66F4;&#x65B0;&#x3084;&#x524A;&#x9664;&#x304C;&#x53EF;&#x80FD;&#x3067;&#x3059;&#x3002;</p>
+<h3>&#x30C8;&#x30E9;&#x30F3;&#x30B6;&#x30AF;&#x30B7;&#x30E7;&#x30F3;</h3>
+<p>&#x30C8;&#x30E9;&#x30F3;&#x30B6;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x6A5F;&#x80FD;&#x306B;&#x3064;&#x3044;&#x3066;&#x306F;&#x3001;&#x3069;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x30B9;&#x30C8;&#x30A2;&#x3082;&#x8CA7;&#x5F31;&#x3067;&#x3059;&#x3002;HDFS&#x306F;&#x305D;&#x3082;&#x305D;&#x3082;&#x30C8;&#x30E9;&#x30F3;&#x30B6;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x304C;&#x306A;&#x304F;&#x3001;Hive&#x306E;&#x30C8;&#x30E9;&#x30F3;&#x30B6;&#x30AF;&#x30B7;&#x30E7;&#x30CA;&#x30EB;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x6A5F;&#x80FD;&#x3067;&#x3082;&#x3001;&#x8907;&#x6570;&#x306E;&#x64CD;&#x4F5C;&#x306B;&#x307E;&#x305F;&#x304C;&#x308B;&#x30C8;&#x30E9;&#x30F3;&#x30B6;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#xFF08;BEGIN&#x3001;COMMIT&#x3001;ROLLBACK&#xFF09;&#x306F;&#x307E;&#x3060;&#x63D0;&#x4F9B;&#x3057;&#x3066;&#x3044;&#x307E;&#x305B;&#x3093;&#x3002;HBase&#x3068;Kudu&#x3082;&#x73FE;&#x72B6;&#x3067;&#x306F;1&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x5185;&#x306E;&#x30C8;&#x30E9;&#x30F3;&#x30B6;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x3057;&#x304B;&#x30B5;&#x30DD;&#x30FC;&#x30C8;&#x3057;&#x3066;&#x304A;&#x3089;&#x305A;&#x3001;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x9593;&#x306E;&#x95A2;&#x4FC2;&#x3092;&#x5F37;&#x5236;&#x3059;&#x308B;&#x3053;&#x3068;&#x3082;&#x3067;&#x304D;&#x307E;&#x305B;&#x3093;&#x3002;</p>
+<p>&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x6574;&#x5408;&#x6027;&#x3092;&#x62C5;&#x4FDD;&#x3057;&#x305F;&#x3044;&#x5834;&#x5408;&#x306F;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x5074;&#x3067;&#x5BFE;&#x51E6;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308A;&#x307E;&#x3059;&#x304C;&#x3001;MySQL&#x3084;PostgreSQL&#x306A;&#x3069;&#x306E;RDB&#x3068;&#x540C;&#x7B49;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x6574;&#x5408;&#x6027;&#x3092;&#x78BA;&#x4FDD;&#x3059;&#x308B;&#x3053;&#x3068;&#x306F;&#x975E;&#x5E38;&#x306B;&#x56F0;&#x96E3;&#x3067;&#x3059;&#x3002;&#x305D;&#x306E;&#x305F;&#x3081;&#x3001;&#x3053;&#x308C;&#x3089;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x30B9;&#x30C8;&#x30A2;&#x306F;&#x8907;&#x96D1;&#x306A;&#x30C8;&#x30E9;&#x30F3;&#x30B6;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x51E6;&#x7406;&#x304C;&#x5FC5;&#x8981;&#x3068;&#x306A;&#x308B;&#x57FA;&#x5E79;&#x7CFB;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#xFF08;&#x91D1;&#x878D;&#x6A5F;&#x95A2;&#x306B;&#x304A;&#x3051;&#x308B;&#x5165;&#x51FA;&#x91D1;&#x51E6;&#x7406;&#x306A;&#x3069;&#xFF09;&#x306B;&#x304A;&#x3051;&#x308B;RDB&#x306E;&#x7F6E;&#x304D;&#x63DB;&#x3048;&#x306B;&#x306F;&#x9069;&#x3057;&#x3066;&#x3044;&#x307E;&#x305B;&#x3093;&#x3002;&#x3069;&#x3061;&#x3089;&#x304B;&#x3068;&#x3044;&#x3046;&#x3068;&#x3001;&#x30C8;&#x30E9;&#x30F3;&#x30B6;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x51E6;&#x7406;&#x304C;&#x3042;&#x307E;&#x308A;&#x5FC5;&#x8981;&#x306A;&#x3044;&#x30C7;&#x30FC;&#x30BF;&#x5206;&#x6790;&#x7528;&#x306E;&#x60C5;&#x5831;&#x7CFB;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x306B;&#x9069;&#x3057;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;</p>
+<h3>SQL&#x306E;&#x5229;&#x7528;</h3>
+<p>HDFS&#x3084;HBase&#x3001;Kudu&#x306F;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x683C;&#x7D0D;&#x3068;&#x53C2;&#x7167;&#x306E;&#x307F;&#x3092;&#x62C5;&#x5F53;&#x3057;&#x307E;&#x3059;&#x3002;&#x3064;&#x307E;&#x308A;&#x3001;MySQL&#x306E;&#x3088;&#x3046;&#x306B;SQL&#x3067;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x96C6;&#x8A08;&#x3057;&#x305F;&#x308A;&#x5909;&#x63DB;&#x3057;&#x305F;&#x308A;&#x3059;&#x308B;&#x6A5F;&#x80FD;&#x306F;&#x3042;&#x308A;&#x307E;&#x305B;&#x3093;&#x3002;&#x305D;&#x306E;&#x305F;&#x3081;&#x3001;&#x3053;&#x308C;&#x3089;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x30B9;&#x30C8;&#x30A2;&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x969B;&#x306F;&#x3001;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x96C6;&#x8A08;&#x3084;&#x5909;&#x63DB;&#x3092;&#x884C;&#x3046;&#x305F;&#x3081;&#x306E;&#x30AF;&#x30A8;&#x30EA;&#x30A8;&#x30F3;&#x30B8;&#x30F3;&#x3084;&#x4E26;&#x5217;&#x5206;&#x6563;&#x51E6;&#x7406;&#x30D5;&#x30EC;&#x30FC;&#x30E0;&#x30EF;&#x30FC;&#x30AF;&#x3092;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;&#x3066;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x306E;&#x304C;&#x4E00;&#x822C;&#x7684;&#x3067;&#x3059;&#x3002;</p>
+<p>HDFS&#x3067;&#x306F;Hive&#x3084;Impala&#x3001;Presto&#x306A;&#x3069;&#x306E;&#x30AF;&#x30A8;&#x30EA;&#x30A8;&#x30F3;&#x30B8;&#x30F3;&#x3092;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;&#x308B;&#x3053;&#x3068;&#x3067;SQL&#x3092;&#x5229;&#x7528;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;HBase&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x30E2;&#x30C7;&#x30EB;&#x306F;&#x8868;&#x5F62;&#x5F0F;&#x3067;&#x306F;&#x3042;&#x308A;&#x307E;&#x305B;&#x3093;&#x304C;&#x3001;&#x30AF;&#x30A8;&#x30EA;&#x30A8;&#x30F3;&#x30B8;&#x30F3;&#x6A5F;&#x80FD;&#x3092;&#x6301;&#x3064;Phoenix&#x3068;&#x3044;&#x3046;OSS&#x3092;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;&#x308B;&#x3053;&#x3068;&#x3067;SQL&#x3092;&#x5229;&#x7528;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;</p>
+<p>Kudu&#x3067;&#x306E;SQL&#x306E;&#x5229;&#x7528;&#x306B;&#x306F;Impala&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x306E;&#x304C;&#x4E00;&#x822C;&#x7684;&#x3067;&#x3059;&#x3002;Impala&#x306F;Hadoop&#x5411;&#x3051;&#x306E;&#x30AF;&#x30A8;&#x30EA;&#x30A8;&#x30F3;&#x30B8;&#x30F3;&#x3067;&#x3042;&#x308A;&#x3001;Kudu&#x3068;&#x540C;&#x3058;&#x304F;Cloudera&#x793E;&#x306B;&#x3088;&#x3063;&#x3066;&#x958B;&#x767A;&#x3055;&#x308C;&#x3001;2012&#x5E74;&#x306B;OSS&#x3068;&#x3057;&#x3066;&#x516C;&#x958B;&#x3055;&#x308C;&#x307E;&#x3057;&#x305F;&#x3002;Impala&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x3053;&#x3068;&#x3067;&#x3001;SQL&#x306B;&#x3088;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x304C;&#x53EF;&#x80FD;&#x3068;&#x306A;&#x308B;&#x307B;&#x304B;&#x3001;BI&#x30C4;&#x30FC;&#x30EB;&#x306A;&#x3069;&#x304B;&#x3089;JDBC&#x3084;ODBC&#x7D4C;&#x7531;&#x3067;Kudu&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x306B;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x306A;&#x308A;&#x307E;&#x3059;&#x3002;&#x307E;&#x305F;&#x3001;Kudu&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x3068;HDFS&#xFF08;Impala&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#xFF09;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x900F;&#x904E;&#x7684;&#x306B;&#x7D50;&#x5408;&#x3059;&#x308B;&#x3053;&#x3068;&#x3082;&#x53EF;&#x80FD;&#x3067;&#x3059;&#x3002;</p>
+<h2>&#x6027;&#x80FD;&#x9762;&#x306E;&#x6BD4;&#x8F03;</h2>
+<p>HDFS&#x3001;HBase&#x3001;Kudu&#x306E;&#x6700;&#x5927;&#x306E;&#x9055;&#x3044;&#x306F;&#x3001;&#x5F97;&#x610F;&#x3068;&#x3059;&#x308B;&#x30EF;&#x30FC;&#x30AF;&#x30ED;&#x30FC;&#x30C9;&#x3067;&#x3059;&#x3002;&#x6027;&#x80FD;&#x9762;&#x306E;&#x6BD4;&#x8F03;&#x3092;&#x8868;2&#x306B;&#x793A;&#x3057;&#x307E;&#x3059;&#x3002;</p>
+<div class="image-box">
+<img src="https://thinkit.co.jp/sites/default/files/article_node/15893_kudu_01_03.png" alt="&#x8868;2&#xFF1A;&#x6027;&#x80FD;&#x9762;&#x306E;&#x6BD4;&#x8F03;" style="width:600px;"><div class="caption">&#x8868;2&#xFF1A;&#x6027;&#x80FD;&#x9762;&#x306E;&#x6BD4;&#x8F03;</div>
+</div>
+<p>HDFS&#x306F;&#x5927;&#x91CF;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x5358;&#x4F4D;&#x3067;&#x307E;&#x3068;&#x3081;&#x3066;&#x683C;&#x7D0D;&#x304A;&#x3088;&#x3073;&#x53C2;&#x7167;&#x3059;&#x308B;&#x3053;&#x3068;&#x3067;&#x3001;&#x9AD8;&#x3044;&#x30B9;&#x30EB;&#x30FC;&#x30D7;&#x30C3;&#x30C8;&#x3092;&#x767A;&#x63EE;&#x3057;&#x307E;&#x3059;&#x3002;&#x305D;&#x306E;&#x305F;&#x3081;&#x3001;&#x3042;&#x3089;&#x304B;&#x3058;&#x3081;&#x84C4;&#x7A4D;&#x3055;&#x308C;&#x305F;&#x5927;&#x91CF;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x3001;&#x307E;&#x3068;&#x3081;&#x3066;&#x30D0;&#x30C3;&#x30C1;&#x51E6;&#x7406;&#x3059;&#x308B;&#x306E;&#x306B;&#x5411;&#x3044;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;&#x307E;&#x305F;&#x3001;HDFS&#x3067;&#x306F;&#x5217;&#x6307;&#x5411;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30D5;&#x30A9;&#x30FC;&#x30DE;&#x30C3;&#x30C8;&#xFF08;Parquet&#x3084;ORC&#xFF09;&#x306E;&#x4F7F;&#x7528;&#x306B;&#x3088;&#x308A;&#x3001;&#x30C7;&#x30A3;&#x30B9;&#x30AF;I/O&#x91CF;&#x306E;&#x524A;&#x6E1B;&#x306B;&#x3088;&#x308B;&#x30B9;&#x30EB;&#x30FC;&#x30D7;&#x30C3;&#x30C8;&#x5411;&#x4E0A;&#x3060;&#x3051;&#x3067;&#x306A;&#x304F;&#x3001;&#x691C;&#x7D22;&#x306E;&#x9AD8;&#x901F;&#x5316;&#x306B;&#x3088;&#x308B;&#x4F4E;&#x30EC;&#x30A4;&#x30C6;&#x30F3;&#x30B7;&#x306E;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x53C2;&#x7167;&#x3082;&#x53EF;&#x80FD;&#x3068;&#x306A;&#x308A;&#x307E;&#x3059;&#x3002;</p>
+<p>HBase&#x306F;&#x5C0F;&#x3055;&#x306A;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x9AD8;&#x983B;&#x5EA6;&#x3067;&#x8AAD;&#x307F;&#x66F8;&#x304D;&#x3059;&#x308B;&#x306E;&#x304C;&#x5F97;&#x610F;&#x3067;&#x3059;&#x3002;&#x305D;&#x306E;&#x305F;&#x3081;&#x3001;&#x30B9;&#x30C8;&#x30EA;&#x30FC;&#x30E0;&#x30C7;&#x30FC;&#x30BF;&#x51E6;&#x7406;&#x3067;&#x6D41;&#x308C;&#x3066;&#x304F;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x30EA;&#x30A2;&#x30EB;&#x30BF;&#x30A4;&#x30E0;&#x306B;&#x683C;&#x7D0D;&#x3057;&#x305F;&#x308A;&#x3001;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x5358;&#x4F4D;&#x306E;&#x7D30;&#x304B;&#x3044;&#x53C2;&#x7167;&#x3092;&#x5927;&#x91CF;&#x306B;&#x884C;&#x3046;&#x3088;&#x3046;&#x306A;&#x51E6;&#x7406;&#x306B;&#x5411;&#x3044;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;&#x305D;&#x306E;&#x305F;&#x3081;&#x5F93;&#x6765;&#x306E;Hadoop&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x3067;&#x306F;&#x3001;&#x30EA;&#x30A2;&#x30EB;&#x30BF;&#x30A4;&#x30E0;&#x306A;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x66F8;&#x304D;&#x8FBC;&#x307F;&#x306B;HBase&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3001;HBase&#x306B;&#x84C4;&#x7A4D;&#x3057;&#x305F;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x5B9A;&#x671F;&#x7684;&#x306B;HDFS&#x306B;&#x79FB;&#x52D5;&#x3057;&#x3066;&#x30D0;&#x30C3;&#x30C1;&#x51E6;&#x7406;&#x3084;&#x30C7;&#x30FC;&#x30BF;&#x5206;&#x6790;&#x306B;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x30B1;&#x30FC;&#x30B9;&#x304C;&#x4E00;&#x822C;&#x7684;&#x3067;&#x3057;&#x305F;&#x3002;</p>
+<p>&#x4E00;&#x65B9;&#x3001;Kudu&#x306F;&#x9AD8;&#x983B;&#x5EA6;&#x306A;&#x30C7;&#x30FC;&#x30BF;&#x683C;&#x7D0D;&#x3068;&#x5927;&#x91CF;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x53C2;&#x7167;&#x306B;&#x9069;&#x3057;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;&#x3064;&#x307E;&#x308A;Kudu&#x306F;&#x6027;&#x80FD;&#x9762;&#x306B;&#x304A;&#x3044;&#x3066;&#x3001;HBase&#x306B;&#x8FD1;&#x3044;&#x683C;&#x7D0D;&#x30EC;&#x30A4;&#x30C6;&#x30F3;&#x30B7;&#x6027;&#x80FD;&#x3068;&#x3001;HDFS&#x306B;&#x8FD1;&#x3044;&#x53C2;&#x7167;&#x30B9;&#x30EB;&#x30FC;&#x30D7;&#x30C3;&#x30C8;&#x6027;&#x80FD;&#x3092;&#x6301;&#x3061;&#x307E;&#x3059;&#x3002;Kudu&#x3092;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x3053;&#x3068;&#x3067;&#x3001;&#x30B9;&#x30C8;&#x30EA;&#x30FC;&#x30E0;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x30EA;&#x30A2;&#x30EB;&#x30BF;&#x30A4;&#x30E0;&#x306B;&#x683C;&#x7D0D;&#x3057;&#x3064;&#x3064;&#x3001;&#x84C4;&#x7A4D;&#x3057;&#x305F;&#x5927;&#x91CF;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x5206;&#x6790;&#x7528;&#x306B;&#x307E;&#x3068;&#x3081;&#x3066;&#x53C2;&#x7167;&#x3059;&#x308B;&#x3001;&#x3068;&#x3044;&#x3063;&#x305F;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x3092;1&#x3064;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x30B9;&#x30C8;&#x30A2;&#x3067;&#x69CB;&#x7BC9;&#x3059;&#x308B;&#x3053;&#x3068;&#x304C;&#x53EF;&#x80FD;&#x3068;&#x306A;&#x308A;&#x307E;&#x3059;&#x3002;&#xFF08;&#x56F3;2&#xFF09;&#x3002;</p>
+<div class="image-box">
+<img src="https://thinkit.co.jp/sites/default/files/article_node/15893_kudu_01_04.png" alt="&#x56F3;2&#xFF1A;&#x6027;&#x80FD;&#x9762;&#x306E;&#x6BD4;&#x8F03;" style="width:600px;"><div class="caption">&#x56F3;2&#xFF1A;&#x6027;&#x80FD;&#x9762;&#x306E;&#x6BD4;&#x8F03;</div>
+</div>
+<h1>Kudu&#x306E;&#x5C0E;&#x5165;&#x4E8B;&#x4F8B;</h1>
+<p>Kudu&#x306E;&#x4E3B;&#x306A;&#x5C0E;&#x5165;&#x4E8B;&#x4F8B;&#x3092;&#x4EE5;&#x4E0B;&#x306B;&#x793A;&#x3057;&#x307E;&#x3059;&#x3002;</p>
+<h2>Comcast&#xFF08;&#x30A2;&#x30E1;&#x30EA;&#x30AB;&#xFF09;</h2>
+<p>Comcast&#x306F;&#x30A2;&#x30E1;&#x30EA;&#x30AB;&#x306E;&#x30B1;&#x30FC;&#x30D6;&#x30EB;&#x30C6;&#x30EC;&#x30D3;&#x4F1A;&#x793E;&#x3067;&#x3001;&#x30C6;&#x30EC;&#x30D3;&#x8996;&#x8074;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x30EA;&#x30A2;&#x30EB;&#x30BF;&#x30A4;&#x30E0;&#x5206;&#x6790;&#x304A;&#x3088;&#x3073;&#x30D0;&#x30C3;&#x30C1;&#x5206;&#x6790;&#x306B;Kudu&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#x3044;&#x307E;&#x3059;&#xFF08;&#x53C2;&#x8003;&#xFF1A;<a href="https://conferences.oreilly.com/strata/strata-ca-2017/public/schedule/detail/56113">Real-time analytics using Kudu at petabyte scale</a>&#xFF09;&#x3002;Comcast&#x3067;&#x306F;410&#x30CE;&#x30FC;&#x30C9;&#x306E;Kudu&#x30AF;&#x30E9;&#x30B9;&#x30BF;&#x306B;3&#x5E74;&#x5206;&#x306E;&#x30A2;&#x30FC;&#x30AB;&#x30A4;&#x30D6;&#x30C7;&#x30FC;&#x30BF;&#x3068;&#x3057;&#x3066;6,000&#x5104;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#xFF08;1&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x3042;&#x305F;&#x308A;&#x5E73;&#x5747;2KB&#xFF09;&#x3092;&#x84C4;&#x7A4D;&#x3057;&#x3066;&#x304A;&#x308A;&#x3001;&#x3055;&#x3089;&#x306B;&#x6BCE;&#x65E5;5&#x5104;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x683C;&#x7D0D;&#x3057;&#x3066;&#x3044;&#x308B;&#x305D;&#x3046;&#x3067;&#x3059;&#x3002;</p>
+<p>Comcast&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x5206;&#x6790;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x3067;&#x306F;&#x3001;&#x30EA;&#x30A2;&#x30EB;&#x30BF;&#x30A4;&#x30E0;&#x306B;&#x767A;&#x751F;&#x3057;&#x305F;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x307E;&#x305A;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x30AD;&#x30E5;&#x30FC;&#x3067;&#x3042;&#x308B;Kafka&#x3067;&#x30AD;&#x30E5;&#x30FC;&#x30A4;&#x30F3;&#x30B0;&#x3057;&#x3066;&#x3001;&#x305D;&#x308C;&#x3092;&#x30B9;&#x30C8;&#x30EA;&#x30FC;&#x30E0;&#x30C7;&#x30FC;&#x30BF;&#x51E6;&#x7406;&#x30D5;&#x30EC;&#x30FC;&#x30E0;&#x30EF;&#x30FC;&#x30AF;&#x3067;&#x3042;&#x308B;Spark Streaming&#x3067;&#x51E6;&#x7406;&#x3057;&#x3066;&#x304B;&#x3089;Kudu&#x306B;&#x683C;&#x7D0D;&#x3057;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;Kudu&#x306B;&#x683C;&#x7D0D;&#x3057;&#x305F;&#x30C7;&#x30FC;&#x30BF;&#x306F;MapReduce&#x3067;&#x30D0;&#x30C3;&#x30C1;&#x51E6;&#x7406;&#x3057;&#x305F;&#x308A;&#x3001;&#x5206;&#x6790;&#x306E;&#x305F;&#x3081;BI&#x30C4;&#x30FC;&#x30EB;&#x304B;&#x3089;Impala&#x7D4C;&#x7531;&#x3067;&#x53C2;&#x7167;&#x3057;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;</p>
+<h2>Xiaomi&#xFF08;&#x4E2D;&#x56FD;&#xFF09;</h2>
+<p>Xiaomi&#x306F;&#x4E2D;&#x56FD;&#x306E;&#x30B9;&#x30DE;&#x30FC;&#x30C8;&#x30D5;&#x30A9;&#x30F3;&#x30E1;&#x30FC;&#x30AB;&#x30FC;&#x3067;&#x3042;&#x308A;&#x3001;&#x30E2;&#x30D0;&#x30A4;&#x30EB;&#x30A2;&#x30D7;&#x30EA;&#x3068;&#x30D0;&#x30C3;&#x30AF;&#x30A8;&#x30F3;&#x30C9;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x304B;&#x3089;&#x53D6;&#x5F97;&#x3057;&#x305F;&#x30C7;&#x30FC;&#x30BF;&#x3092;Kudu&#x306B;&#x683C;&#x7D0D;&#x3057;&#x3066;&#x3001;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x306E;&#x30E2;&#x30CB;&#x30BF;&#x30EA;&#x30F3;&#x30B0;&#x3084;&#x30C8;&#x30E9;&#x30D6;&#x30EB;&#x30B7;&#x30E5;&#x30FC;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x306B;&#x5229;&#x7528;&#x3057;&#x3066;&#x3044;&#x307E;&#x3059;&#xFF08;&#x53C2;&#x8003;&#xFF1A;<a href="https://www.slideshare.net/SparkSummit/spark-summit-eu-talk-by-mike-percy/25/">Spark Summit EU talk by Mike Percy</a>&#xFF09;&#x3002;</p>
+<p>Xiaomi&#x3067;&#x306F;&#x5143;&#x3005;&#x3001;HBase&#x3068;HDFS&#x3092;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;&#x305F;&#x30C7;&#x30FC;&#x30BF;&#x5206;&#x6790;&#x30D1;&#x30A4;&#x30D7;&#x30E9;&#x30A4;&#x30F3;&#x3092;&#x69CB;&#x7BC9;&#x3057;&#x3066;&#x3044;&#x307E;&#x3057;&#x305F;&#x3002;&#x3053;&#x306E;&#x30D1;&#x30A4;&#x30D7;&#x30E9;&#x30A4;&#x30F3;&#x3067;&#x306F;&#x3001;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x4E00;&#x65E6;HBase&#xFF08;&#x30EA;&#x30A2;&#x30EB;&#x30BF;&#x30A4;&#x30E0;&#x306A;&#x66F8;&#x304D;&#x8FBC;&#x307F;&#x304C;&#x5F97;&#x610F;&#xFF09;&#x306B;&#x683C;&#x7D0D;&#x3057;&#x3066;&#x304A;&#x304D;&#x3001;HBase&#x306B;&#x84C4;&#x7A4D;&#x3057;&#x305F;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x5B9A;&#x671F;&#x7684;&#x306A;&#x30D0;&#x30C3;&#x30C1;&#x51E6;&#x7406;&#x3067;HDFS&#xFF08;&#x5927;&#x91CF;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x53C2;&#x7167;&#x304C;&#x5F97;&#x610F;&#xFF09;&#x306B;&#x30B3;&#x30D4;&#x30FC;&#x3057;&#x3066;&#x3001;&#x5206;&#x6790;&#x306B;&#x4F7F;&#x7528;&#x3057;&#x3066;&#x3044;&#x307E;&#x3057;&#x305F;&#x3002;&#x3057;&#x304B;&#x3057;&#x3001;&#x3053;&#x306E;&#x30D1;&#x30A4;&#x30D7;&#x30E9;&#x30A4;&#x30F3;&#x3067;&#x306F;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x30B3;&#x30D4;&#x30FC;&#x304C;&#x5FC5;&#x8981;&#x306A;&#x305F;&#x3081;&#x3001;&#x30EA;&#x30A2;&#x30EB;&#x30BF;&#x30A4;&#x30E0;&#x306A;&#x30C7;&#x30FC;&#x30BF;&#x5206;&#x6790;&#x304C;&#x3067;&#x304D;&#x3066;&#x3044;&#x307E;&#x305B;&#x3093;&#x3067;&#x3057;&#x305F;&#x3002;</p>
+<p>&#x305D;&#x3053;&#x3067;&#x3001;Xiaomi&#x306F;&#x30EA;&#x30A2;&#x30EB;&#x30BF;&#x30A4;&#x30E0;&#x306A;&#x30C7;&#x30FC;&#x30BF;&#x5206;&#x6790;&#x3092;&#x884C;&#x3046;&#x305F;&#x3081;&#x306B;&#x3001;&#x30EA;&#x30A2;&#x30EB;&#x30BF;&#x30A4;&#x30E0;&#x306A;&#x66F8;&#x304D;&#x8FBC;&#x307F;&#x3068;&#x5927;&#x91CF;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x53C2;&#x7167;&#x304C;&#x53EF;&#x80FD;&#x306A;Kudu&#x3092;&#x5C0E;&#x5165;&#x3057;&#x307E;&#x3057;&#x305F;&#x3002;&#x3053;&#x306E;&#x30D1;&#x30A4;&#x30D7;&#x30E9;&#x30A4;&#x30F3;&#x3067;&#x306F;&#x3001;&#x30EA;&#x30A2;&#x30EB;&#x30BF;&#x30A4;&#x30E0;&#x306B;&#x767A;&#x751F;&#x3057;&#x305F;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x76F4;&#x63A5;Kudu&#x306B;&#x683C;&#x7D0D;&#x3059;&#x308B;&#x304B;&#x3001;Kafka&#x3067;&#x30AD;&#x30E5;&#x30FC;&#x30A4;&#x30F3;&#x30B0;&#x5F8C;&#x306B;&#x30B9;&#x30C8;&#x30EA;&#x30FC;&#x30E0;&#x30C7;&#x30FC;&#x30BF;&#x51E6;&#x7406;&#x30D5;&#x30EC;&#x30FC;&#x30E0;&#x30EF;&#x30FC;&#x30AF;&#x3067;&#x3042;&#x308B;Storm&#x3067;&#x51E6;&#x7406;&#x3057;&#x3066;&#x304B;&#x3089;Kudu&#x306B;&#x683C;&#x7D0D;&#x3057;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;Kudu&#x30AF;&#x30E9;&#x30B9;&#x30BF;&#x306B;&#x306F;&#x6BCE;&#x65E5;200&#x5104;&#x4EE5;&#x4E0A;&#x306E;&#x30EC;&#x30B3;&#x30FC;&#x30C9;&#x304C;&#x30EA;&#x30A2;&#x30EB;&#x30BF;&#x30A4;&#x30E0;&#x306B;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x3001;&#x683C;&#x7D0D;&#x3057;&#x305F;&#x30C7;&#x30FC;&#x30BF;&#x306F;&#x5206;&#x6790;&#x306E;&#x305F;&#x3081;Impala&#x306A;&#x3069;&#x3092;&#x7528;&#x3044;&#x3066;&#x53C2;&#x7167;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;</p>
+<h1>Kudu&#x306E;&#x5178;&#x578B;&#x7684;&#x306A;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x69CB;&#x6210;</h1>
+<p>&#x4E0A;&#x8A18;&#x306E;&#x5C0E;&#x5165;&#x4E8B;&#x4F8B;&#x306F;&#x3044;&#x305A;&#x308C;&#x3082;&#x3001;&#x30EA;&#x30A2;&#x30EB;&#x30BF;&#x30A4;&#x30E0;&#x306B;&#x767A;&#x751F;&#x3059;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x84C4;&#x7A4D;&#x3057;&#x3066;&#x5206;&#x6790;&#x3059;&#x308B;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x3067;&#x3059;&#x3002;Kudu&#x306F;&#x3053;&#x306E;&#x3088;&#x3046;&#x306A;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x306B;&#x304A;&#x3044;&#x3066;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x30EA;&#x30A2;&#x30EB;&#x30BF;&#x30A4;&#x30E0;&#x306B;&#x683C;&#x7D0D;&#x3057;&#x3001;&#x30C7;&#x30FC;&#x30BF;&#x5206;&#x6790;&#x7528;&#x306B;&#x307E;&#x3068;&#x3081;&#x3066;&#x53C2;&#x7167;&#x3059;&#x308B;&#x7528;&#x9014;&#x306B;&#x4F7F;&#x7528;&#x3055;&#x308C;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;</p>
+<p>&#x3053;&#x306E;&#x3088;&#x3046;&#x306A;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x306F;&#x4ED6;&#x306E;OSS&#x3068;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;&#x3066;&#x69CB;&#x7BC9;&#x3055;&#x308C;&#x308B;&#x3053;&#x3068;&#x304C;&#x591A;&#x304F;&#x3001;&#x7279;&#x306B;&#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;&#x30AD;&#x30E5;&#x30FC;&#x3067;&#x3042;&#x308B;Kafka&#x3001;&#x30B9;&#x30C8;&#x30EA;&#x30FC;&#x30E0;&#x30C7;&#x30FC;&#x30BF;&#x51E6;&#x7406;&#x30D5;&#x30EC;&#x30FC;&#x30E0;&#x30EF;&#x30FC;&#x30AF;&#x3067;&#x3042;&#x308B;Spark Streaming&#x3084;Storm&#x3001;&#x4F4E;&#x30EC;&#x30A4;&#x30C6;&#x30F3;&#x30B7;&#x306E;&#x30AF;&#x30A8;&#x30EA;&#x30A8;&#x30F3;&#x30B8;&#x30F3;&#x3067;&#x3042;&#x308B;Impala&#x304C;&#x3088;&#x304F;&#x4F7F;&#x7528;&#x3055;&#x308C;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;&#x56F3;3&#x306B;Kudu&#x306E;&#x5178;&#x578B;&#x7684;&#x306A;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x69CB;&#x6210;&#x3092;&#x793A;&#x3057;&#x307E;&#x3059;&#x3002;</p>
+<div class="image-box">
+<img src="https://thinkit.co.jp/sites/default/files/article_node/15893_kudu_01_05.png" alt="&#x56F3;3&#xFF1A;Kudu&#x306E;&#x5178;&#x578B;&#x7684;&#x306A;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x69CB;&#x6210;" style="width:600px;"><div class="caption">&#x56F3;3&#xFF1A;Kudu&#x306E;&#x5178;&#x578B;&#x7684;&#x306A;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x69CB;&#x6210;</div>
+</div>
+<h1>&#x304A;&#x308F;&#x308A;&#x306B;</h1>
+<p>&#x4ECA;&#x56DE;&#x306F;Hadoop&#x5411;&#x3051;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x30B9;&#x30C8;&#x30A2;&#x3067;&#x3042;&#x308B;Kudu&#x3001;HBase&#x3001;HDFS&#x306E;&#x6BD4;&#x8F03;&#x3068;&#x3001;Kudu&#x306B;&#x9069;&#x3057;&#x305F;&#x30E6;&#x30FC;&#x30B9;&#x30B1;&#x30FC;&#x30B9;&#x3092;&#x7D39;&#x4ECB;&#x3057;&#x307E;&#x3057;&#x305F;&#x3002;Kudu&#x306F;&#x9AD8;&#x3044;&#x30B9;&#x30B1;&#x30FC;&#x30E9;&#x30D3;&#x30EA;&#x30C6;&#x30A3;&#x3092;&#x6301;&#x3064;&#x5206;&#x6563;&#x578B;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x30B9;&#x30C8;&#x30A2;&#x3067;&#x3042;&#x308A;&#x3001;Hadoop&#x30A8;&#x30B3;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x306B;&#x9069;&#x5408;&#x3059;&#x308B;&#x3088;&#x3046;&#x306B;&#x8A2D;&#x8A08;&#x3055;&#x308C;&#x305F;OSS&#x3067;&#x3059;&#x3002;Kudu&#x306F;&#x8868;&#x5F62;&#x5F0F;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x6271;&#x3044;&#x3001;&#x9AD8;&#x983B;&#x5EA6;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x683C;&#x7D0D;&#x3068;&#x5927;&#x91CF;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x53C2;&#x7167;&#x306E;&#x4E21;&#x65B9;&#x306E;&#x51E6;&#x7406;&#x306B;&#x512A;&#x308C;&#x3066;&#x304A;&#x308A;&#x3001;&#x4E3B;&#x306B;&#x30C7;&#x30FC;&#x30BF;&#x5206;&#x6790;&#x7528;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x3067;&#x6D3B;&#x7528;&#x3055;&#x308C;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;</p>
+<p>&#x6B21;&#x56DE;&#x306F;Kudu&#x306E;&#x5177;&#x4F53;&#x7684;&#x306A;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x69CB;&#x6210;&#x3068;&#x4E3B;&#x8981;&#x306A;&#x6A5F;&#x80FD;&#x3001;&#x304A;&#x3088;&#x3073;Kudu&#x304C;&#x5927;&#x91CF;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x51E6;&#x7406;&#x3059;&#x308B;&#x4ED5;&#x7D44;&#x307F;&#x3092;&#x7D39;&#x4ECB;&#x3057;&#x307E;&#x3059;&#x3002;</p>
+</div></div>
+      </div>
+</div>
+<div class="easy_social_box clearfix horizontal easy_social_lang_ja">
+            <div class="easy_social-widget easy_social-widget-twitter first"><a href="http://twitter.com/share" class="twitter-share-button" data-url="https://thinkit.co.jp/article/15893" data-count="horizontal" data-lang="ja" data-via="thinkitcojp" data-related=":" data-text="&#x5206;&#x6563;&#x578B;&#x30C7;&#x30FC;&#x30BF;&#x30B9;&#x30C8;&#x30A2;Apache Kudu&#x306E;&#x7279;&#x5FB4;&#x3068;&#x30E6;&#x30FC;&#x30B9;&#x30B1;&#x30FC;&#x30B9;">Tweet</a></div>
+          <div class="easy_social-widget easy_social-widget-facebook"><fb:like href="https://thinkit.co.jp/article/15893" send="true" layout="button_count" width="100" show_faces="false" action="like" colorscheme="light" font></fb:like></div>
+          <div class="easy_social-widget easy_social-widget-googleplus"><div class="g-plusone" data-size="medium" data-annotation="bubble" data-href="https://thinkit.co.jp/article/15893"></div></div>
+          <div class="easy_social-widget easy_social-widget-hatena last">  <a href="https://thinkit.co.jp/article/15893" class="hatena-bookmark-button" data-hatena-bookmark-title="&#x5206;&#x6563;&#x578B;&#x30C7;&#x30FC;&#x30BF;&#x30B9;&#x30C8;&#x30A2;Apache Kudu&#x306E;&#x7279;&#x5FB4;&#x3068;&#x30E6;&#x30FC;&#x30B9;&#x30B1;&#x30FC;&#x30B9;" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja" title="&#x3053;&#x306E;&#x8A18;&#x4E8B;&#x3092;&#x306F;&#x3066;&#x306A;&#x30D6;&#x30C3;&#x30AF;&#x30DE;&#x30FC;&#x30AF;&#x306B;&#x8FFD;&#x52A0;">
+  <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="&#x3053;&#x306E;&#x30A8;&#x30F3;&#x30C8;&#x30EA;&#x30FC;&#x3092;&#x306F;&#x3066;&#x306A;&#x30D6;&#x30C3;&#x30AF;&#x30DE;&#x30FC;&#x30AF;&#x306B;&#x8FFD;&#x52A0;" width="20" height="20" style="border: none;">
+  </a></div>
+  </div> <div class="tags"><i class="fa fa-tags"></i> <span class="tag"><a href="https://thinkit.co.jp/tag/8765">Apache Kudu</a></span></div><div class="field field-name-statisticsajax field-type-ds field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even"></div>
+      </div>
+</div>
+    </div>
+  </div>
+</div>
+
+
+
+  </div>
+
+  
+  </div>
+<div class="panel-pane pane-entity-view pane-taxonomy-term">
+  
+      
+  
+  <div class="pane-content">
+    
+
+<div class="taxonomy-term vocabulary-serial-article view-mode-serial_footer clearfix">
+    <div class="row">
+    <div class="col-sm-24 ">
+          </div>
+  </div>
+</div>
+
+
+
+  </div>
+
+  
+  </div>
+<div class="panel-pane pane-views-panes pane-article-ref-panel-pane-1">
+  
+      
+  
+  <div class="pane-content">
+    <div class="view view-article-ref view-id-article_ref view-display-id-panel_pane_1 view-dom-id-fd874bafbbcb5bc904f8945b8ff15024">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first views-row-last">
+    <div class="node node-author node-promoted node-teaser view-mode-teaser clearfix">
+<div class>
+
+  <div class="author-wrapper">
+    <div class="author-name-table">
+      <div class="author-name-box">
+        <span class="author-label">&#x8457;&#x8005;</span><span class="author-name"><div class="field field-name-title field-type-ds field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even">&#x4F0A;&#x85E4; &#x96C5;&#x535A;</div>
+      </div>
+</div>
+</span>
+      </div>
+            <div class="author-button-box">
+        <a class="author-button hidden-xs" href="https://thinkit.co.jp/author/10002" role="button">&#x3053;&#x306E;&#x8457;&#x8005;&#x306E;&#x8A18;&#x4E8B;&#x4E00;&#x89A7;</a>
+        <a class="author-button hidden-sm hidden-md hidden-lg" href="https://thinkit.co.jp/author/10002" role="button">&#x3053;&#x306E;&#x8457;&#x8005;&#x306E;<br>&#x8A18;&#x4E8B;&#x4E00;&#x89A7;</a>
+      </div>
+          </div>
+    <div class="author-info-box">
+      <div class="author-img">
+              </div>
+      <div class="author-info">
+        <div class="field field-name-field-op-author-jobtitle field-type-text field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even">&#x682A;&#x5F0F;&#x4F1A;&#x793E; &#x65E5;&#x7ACB;&#x88FD;&#x4F5C;&#x6240;</div>
+      </div>
+</div>
+<div class="field field-name-body field-type-text-with-summary field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even"><div class="tex2jax"><p>OSS&#x30BD;&#x30EA;&#x30E5;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x30BB;&#x30F3;&#x30BF;&#x6240;&#x5C5E;&#x3002;&#x3053;&#x308C;&#x307E;&#x3067;&#x306B;&#x30B9;&#x30C8;&#x30EC;&#x30FC;&#x30B8;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x3068;&#x305D;&#x306E;&#x7BA1;&#x7406;&#x30BD;&#x30D5;&#x30C8;&#x30A6;&#x30A7;&#x30A2;&#x306E;&#x958B;&#x767A;&#x3092;&#x624B;&#x639B;&#x3051;&#x3066;&#x304D;&#x305F;&#x3002;<br>&#x73FE;&#x5728;&#x306F;Hadoop&#x3084;Spark&#x3001;Kafka&#x3092;&#x4E2D;&#x5FC3;&#x3068;&#x3057;&#x305F;&#x30D3;&#x30C3;&#x30B0;&#x30C7;&#x30FC;&#x30BF;&#x95A2;&#x9023;OSS&#x306E;&#x5C0E;&#x5165;&#x652F;&#x63F4;&#x3084;&#x30BD;&#x30EA;&#x30E5;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x958B;&#x767A;&#x3001;&#x304A;&#x3088;&#x3073;&#x30D3;&#x30C3;&#x30B0;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x6D3B;&#x7528;&#x3057;&#x305F;&#x30C7;&#x30FC;&#x30BF;&#x5206;&#x6790;&#x696D;&#x52D9;&#x3092;&#x62C5;&#x5F53;&#x3057;&#x3066;&#x3044;&#x308B;&#x3002;</p>
+</div></div>
+      </div>
+</div>
+      </div>
+    </div>
+  </div>
+  
+</div>
+</div>
+
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>  </div>
+
+  
+  </div>
+<div class="panel-pane pane-custom pane-1 adsense_pane_node">
+  
+      
+  
+  <div class="pane-content">
+    <div class="adsense adsense-under-node1 col-sm-12">
+
+
+<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-4894439427301282" data-ad-slot="8355601071"></ins>
+
+</div>
+
+<div class="adsense adsense-under-node2 col-sm-12">
+
+
+<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-4894439427301282" data-ad-slot="9832334271"></ins>
+
+</div>  </div>
+
+  
+  </div>
+<div class="panel-pane pane-views-panes pane-article-same-serial-panel-pane-1">
+  
+        <h2 class="pane-title">
+      <i class="fa fa-history"></i> &#x9023;&#x8F09;&#x30D0;&#x30C3;&#x30AF;&#x30CA;&#x30F3;&#x30D0;&#x30FC;    </h2>
+    
+  
+  <div class="pane-content">
+    <div class="view view-article-same-serial view-id-article_same_serial view-display-id-panel_pane_1 article-list view-dom-id-9f233c2b59a89000e7d26abe0ee3a21d">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first views-row-last">
+    <div class="ds-1col node node-article node-promoted node-sticky node-teaser view-mode-teaser clearfix">
+
+  
+  <a href="https://thinkit.co.jp/article/15893" class="active"><img class="img-responsive" src="https://thinkit.co.jp/sites/default/files/styles/articlethumbnail650x277/public/main_images/15893_kudu_logo.png?itok=rgyXWiRP" width="650" height="277" alt></a><div class="group-rensai-texts field-group-div"><span class="category-label"><a href="https://thinkit.co.jp/type/4529">&#x6280;&#x8853;&#x89E3;&#x8AAC;</a></span><div class="field field-name-field-serial-number field-type-number-integer field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even">&#x7B2C;1&#x56DE;</div>
+      </div>
+</div>
+<h2 class="list"><a href="https://thinkit.co.jp/article/15893" class="active">&#x5206;&#x6563;&#x578B;&#x30C7;&#x30FC;&#x30BF;&#x30B9;&#x30C8;&#x30A2;Apache Kudu&#x306E;&#x7279;&#x5FB4;&#x3068;&#x30E6;&#x30FC;&#x30B9;&#x30B1;&#x30FC;&#x30B9;</a></h2><div class="date">2019/3/29</div><div class="field field-name-node-link field-type-ds field-label-hidden">
+    <div class="field-items">
+          <div class="field-item even"><a href="https://thinkit.co.jp/article/15893" class=" active">&#x7D9A;&#x304D;&#x3092;&#x8AAD;&#x3080;</a></div>
+      </div>
+</div>
+</div></div>
+
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>  </div>
+
+  
+  </div>
+<div class="panel-pane pane-custom pane-2">
+  
+        <h2 class="pane-title">
+      <i class="fa fa-cloud-download"></i>Think IT&#x4F1A;&#x54E1;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x7121;&#x6599;&#x767B;&#x9332;&#x53D7;&#x4ED8;&#x4E2D;    </h2>
+    
+  
+  <div class="pane-content">
+    <div class="tex2jax">
+
+Think IT&#x3067;&#x306F;&#x3001;&#x3088;&#x308A;&#x4ED8;&#x52A0;&#x4FA1;&#x5024;&#x306E;&#x9AD8;&#x3044;&#x30B3;&#x30F3;&#x30C6;&#x30F3;&#x30C4;&#x3092;&#x4F1A;&#x54E1;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x3068;&#x3057;&#x3066;&#x63D0;&#x4F9B;&#x3057;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;&#x4F1A;&#x54E1;&#x767B;&#x9332;&#x3092;&#x6E08;&#x307E;&#x305B;&#x3066;Think IT&#x306E;Web&#x30B5;&#x30A4;&#x30C8;&#x306B;&#x30ED;&#x30B0;&#x30A4;&#x30F3;&#x3059;&#x308B;&#x3053;&#x3068;&#x3067;&#x3055;&#x307E;&#x3056;&#x307E;&#x306A;&#x9650;&#x5B9A;&#x7279;&#x5178;&#x3092;&#x5165;&#x624B;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x306A;&#x308A;&#x307E;&#x3059;&#x3002;
+
+<p><a class="button_whitepaper_submit" href="https://thinkit.co.jp/member">Think IT&#x4F1A;&#x54E1;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x306E;&#x6982;&#x8981;&#x3068;&#x30E1;&#x30EA;&#x30C3;&#x30C8;&#x3092;&#x30C1;&#x30A7;&#x30C3;&#x30AF;</a></p>
+</div>  </div>
+
+  
+  </div>
+<div class="panel-pane pane-views-panes pane-article-related-panel-pane-1">
+  
+        <h2 class="pane-title">
+      <i class="fa fa-thumbs-up"></i> &#x4ED6;&#x306B;&#x3082;&#x3053;&#x306E;&#x8A18;&#x4E8B;&#x304C;&#x8AAD;&#x307E;&#x308C;&#x3066;&#x3044;&#x307E;&#x3059;    </h2>
+    
+  
+  <div class="pane-content">
+    <div class="view view-article-related view-id-article_related view-display-id-panel_pane_1 whatsnew-list view-dom-id-1c2b7c15a27aa895abfe8e2d4a212da4">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-responsive-grid views-responsive-grid-horizontal views-columns-3 row">
+      <div class="views-row views-row-1 views-row-first">
+      <div class="views-column col-sm-8 views-column-1 views-column-first">
+      <div class="node node-article node-promoted node-sticky view-mode-teaser_vertical clearfix">
+
+<div class>
+<div class="field field-name-field-main-image"><a href="https://thinkit.co.jp/article/15937"><img class="img-responsive" src="https://thinkit.co.jp/sites/default/files/styles/articlethumbnail650x277/public/main_images/15937_main.jpg?itok=Fdgz2lPV" width="650" height="277" alt></a></div><div class="group-teaser-vertical-text field-group-div"><span class="category-label-inverse"><a href="https://thinkit.co.jp/category/4506">&#x30AF;&#x30E9;&#x30A6;&#x30C9;</a></span><span class="category-label-inverse"><a href="https://thinkit.co.jp/type/4529">&#x6280;&#x8853;&#x89E3;&#x8AAC;</a></span><div class="field field-name-title"><h2 class="title"><a href="https://thinkit.co.jp/article/15937">OpenShift&#xFF1A;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x69CB;&#x6210;&#x3068;&#x904B;&#x7528;</a></h2></div><div class="date pull-right">2019/3/28</div></div></div>
+
+</div>
+
+    </div>
+      <div class="views-column col-sm-8 views-column-2">
+      <div class="node node-article node-promoted node-sticky view-mode-teaser_vertical clearfix">
+
+<div class>
+<div class="field field-name-field-main-image"><a href="https://thinkit.co.jp/article/15922"><img class="img-responsive" src="https://thinkit.co.jp/sites/default/files/styles/articlethumbnail650x277/public/main_images/15922_main.jpg?itok=W86IzV_f" width="650" height="277" alt></a></div><div class="group-teaser-vertical-text field-group-div"><span class="category-label-inverse"><a href="https://thinkit.co.jp/category/4506">&#x30AF;&#x30E9;&#x30A6;&#x30C9;</a></span><span class="category-label-inverse"><a href="https://thinkit.co.jp/type/4529">&#x6280;&#x8853;&#x89E3;&#x8AAC;</a></span><div class="field field-name-title"><h2 class="title"><a href="https://thinkit.co.jp/article/15922">Rancher&#x306E;Catalog&#x6A5F;&#x80FD;&#x3092;&#x8A73;&#x7D30;&#x306B;&#x898B;&#x3066;&#x307F;&#x308B;</a></h2></div><div class="date pull-right">2019/3/27</div></div></div>
+
+</div>
+
+    </div>
+      <div class="views-column col-sm-8 views-column-3 views-column-last">
+      <div class="node node-article node-promoted node-sticky view-mode-teaser_vertical clearfix">
+
+<div class>
+<div class="field field-name-field-main-image"><a href="https://thinkit.co.jp/article/15880"><img class="img-responsive" src="https://thinkit.co.jp/sites/default/files/styles/articlethumbnail650x277/public/main_images/cover_AI_math_4.jpg?itok=A_3LhRPC" width="650" height="277" alt></a></div><div class="group-teaser-vertical-text field-group-div"><span class="category-label-inverse"><a href="https://thinkit.co.jp/category/6904">AI&#x30FB;&#x4EBA;&#x5DE5;&#x77E5;&#x80FD;</a></span><span class="category-label-inverse"><a href="https://thinkit.co.jp/type/4529">&#x6280;&#x8853;&#x89E3;&#x8AAC;</a></span><div class="field field-name-title"><h2 class="title"><a href="https://thinkit.co.jp/article/15880">&#x7DDA;&#x578B;&#x4EE3;&#x6570;&#x3078;&#x306E;&#x62DB;&#x5F85;</a></h2></div><div class="date pull-right">2019/3/20</div></div></div>
+
+</div>
+
+    </div>
+    </div>
+      <div class="views-row views-row-2 views-row-last">
+      <div class="views-column col-sm-8 views-column-1 views-column-first">
+      <div class="node node-article node-promoted node-sticky view-mode-teaser_vertical clearfix">
+
+<div class>
+<div class="field field-name-field-main-image"><a href="https://thinkit.co.jp/article/15876"><img class="img-responsive" src="https://thinkit.co.jp/sites/default/files/styles/articlethumbnail650x277/public/main_images/15876_main.jpg?itok=6TljZyiJ" width="650" height="277" alt></a></div><div class="group-teaser-vertical-text field-group-div"><span class="category-label-inverse"><a href="https://thinkit.co.jp/category/4506">&#x30AF;&#x30E9;&#x30A6;&#x30C9;</a></span><span class="category-label-inverse"><a href="https://thinkit.co.jp/type/4529">&#x6280;&#x8853;&#x89E3;&#x8AAC;</a></span><div class="field field-name-title"><h2 class="title"><a href="https://thinkit.co.jp/article/15876">Rancher&#x3067;Kubernetes&#x30AF;&#x30E9;&#x30B9;&#x30BF;&#x3092;&#x4F5C;&#x308B;</a></h2></div><div class="date pull-right">2019/3/13</div></div></div>
+
+</div>
+
+    </div>
+      <div class="views-column col-sm-8 views-column-2">
+      <div class="node node-article node-promoted node-sticky view-mode-teaser_vertical clearfix">
+
+<div class>
+<div class="field field-name-field-main-image"><a href="https://thinkit.co.jp/article/15787"><img class="img-responsive" src="https://thinkit.co.jp/sites/default/files/styles/articlethumbnail650x277/public/main_images/cover_AI_math_3.jpg?itok=-mPqYHXa" width="650" height="277" alt></a></div><div class="group-teaser-vertical-text field-group-div"><span class="category-label-inverse"><a href="https://thinkit.co.jp/category/6904">AI&#x30FB;&#x4EBA;&#x5DE5;&#x77E5;&#x80FD;</a></span><span class="category-label-inverse"><a href="https://thinkit.co.jp/type/4529">&#x6280;&#x8853;&#x89E3;&#x8AAC;</a></span><div class="field field-name-title"><h2 class="title"><a href="https://thinkit.co.jp/article/15787">&#x9023;&#x9396;&#x5F8B;&#x306E;&#x539F;&#x7406;&#x3067;&#x3001;&#x8AA4;&#x5DEE;&#x3092;&#x300C;&#x5F8C;&#x308D;&#x300D;&#x306B;&#x4F1D;&#x3048;&#x3088;&#x3046;</a></h2></div><div class="date pull-right">2019/2/28</div></div></div>
+
+</div>
+
+    </div>
+      <div class="views-column col-sm-8 views-column-3 views-column-last">
+      <div class="node node-article node-promoted node-sticky view-mode-teaser_vertical clearfix">
+
+<div class>
+<div class="field field-name-field-main-image"><a href="https://thinkit.co.jp/article/15816"><img class="img-responsive" src="https://thinkit.co.jp/sites/default/files/styles/articlethumbnail650x277/public/main_images/15816_main.jpg?itok=qKbaRM6x" width="650" height="277" alt></a></div><div class="group-teaser-vertical-text field-group-div"><span class="category-label-inverse"><a href="https://thinkit.co.jp/category/4506">&#x30AF;&#x30E9;&#x30A6;&#x30C9;</a></span><span class="category-label-inverse"><a href="https://thinkit.co.jp/type/4529">&#x6280;&#x8853;&#x89E3;&#x8AAC;</a></span><div class="field field-name-title"><h2 class="title"><a href="https://thinkit.co.jp/article/15816">Rancher&#x3063;&#x3066;&#x3069;&#x3093;&#x306A;&#x3082;&#x306E;&#xFF1F;</a></h2></div><div class="date pull-right">2019/2/27</div></div></div>
+
+</div>
+
+    </div>
+    </div>
+    </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>  </div>
+
+  
+  </div>
+<div class="panel-pane pane-block pane-apachesolr-search-mlt-001 pane-apachesolr-search">
+  
+        <h2 class="pane-title">
+      <i class="fa fa-search"></i> &#x5168;&#x6587;&#x691C;&#x7D22;&#x30A8;&#x30F3;&#x30B8;&#x30F3;&#x306B;&#x3088;&#x308B;&#x304A;&#x3059;&#x3059;&#x3081;&#x8A18;&#x4E8B;    </h2>
+    
+  
+  <div class="pane-content">
+    <div class="item-list"><ul><li class="first"><a href="https://thinkit.co.jp/article/11882">HBase&#x306E;&#x6982;&#x8981;&#x3068;&#x30A2;&#x30FC;&#x30AD;&#x30C6;&#x30AF;&#x30C1;&#x30E3;</a></li>
+<li><a href="https://thinkit.co.jp/article/14654">&#x30D3;&#x30C3;&#x30B0;&#x30C7;&#x30FC;&#x30BF;&#x51E6;&#x7406;&#x57FA;&#x76E4;&#x306B;&#x5BFE;&#x5FDC;&#x3057;&#x305F;FDW&#x306E;&#x7D39;&#x4ECB;&#x3068;hdfs_fdw&#x306E;&#x8A2D;&#x8A08;&#x30FB;&#x69CB;&#x7BC9;&#x306E;&#x7D39;&#x4ECB;</a></li>
+<li><a href="https://thinkit.co.jp/news_event/2014/10/24/5364">Cloudera&#x3001;&#x300C;Cloudera Enterprise 5.2&#x300D;&#x3092;&#x767A;&#x8868;</a></li>
+<li><a href="https://thinkit.co.jp/article/9370">&#x5148;&#x9032;&#x30E6;&#x30FC;&#x30B6;&#x30FC;&#x304C;&#x30EA;&#x30FC;&#x30C9;&#x3059;&#x308B;Hadoop/Spark&#x5FDC;&#x7528;&#x4E8B;&#x4F8B;&#xFF5E;Spark&#x3067;5&#x500D;&#x306E;&#x6027;&#x80FD;&#x30A2;&#x30C3;&#x30D7;&#xFF5E;</a></li>
+<li><a href="https://thinkit.co.jp/news_event/2014/09/24/5281">MapR Technologies&#x3001;Hadoop&#x306E;&#x696D;&#x52D9;&#x30AA;&#x30DA;&#x30EC;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x6A5F;&#x80FD;&#x3092;&#x5F37;&#x5316;&#x3057;&#x305F;&#x6700;&#x65B0;&#x7248;&#x3092;&#x63D0;&#x4F9B;&#x958B;&#x59CB;</a></li>
+<li><a href="https://thinkit.co.jp/story/2010/06/18/1619">&#x300C;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x30E9;&#x30A4;&#x30D5;&#x30FB;&#x30B5;&#x30A4;&#x30AF;&#x30EB;&#x300D;&#x3067;&#x8003;&#x3048;&#x308B;Hadoop&#x306E;&#x4F7F;&#x3044;&#x3069;&#x3053;&#x308D;</a></li>
+<li><a href="https://thinkit.co.jp/article/9958">Spark Streaming&#x306E;&#x6982;&#x8981;&#x3068;&#x691C;&#x8A3C;&#x30B7;&#x30CA;&#x30EA;&#x30AA;</a></li>
+<li><a href="https://thinkit.co.jp/story/2010/06/25/1628">Hadoop&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x69CB;&#x7BC9;&#x306E;&#x30CE;&#x30A6;&#x30CF;&#x30A6;</a></li>
+<li><a href="https://thinkit.co.jp/article/11027">Spark 2.0&#x3092;&#x6D3B;&#x7528;&#x3057;&#x305F;&#x914D;&#x96FB;&#x8A2D;&#x5099;&#x306E;&#x8CA0;&#x8377;&#x96C6;&#x8A08;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x306E;&#x6027;&#x80FD;&#x691C;&#x8A3C;</a></li>
+<li class="last"><a href="https://thinkit.co.jp/article/11963">HBase&#x5C0E;&#x5165;&#x6642;&#x306E;&#x691C;&#x8A0E;&#x9805;&#x76EE;&#x3068;&#x63A8;&#x5968;&#x69CB;&#x6210;&#x3001;&#x304A;&#x3088;&#x3073;&#x8A2D;&#x8A08;&#x30CE;&#x30A6;&#x30CF;&#x30A6;</a></li>
+</ul></div>  </div>
+
+  
+  </div>
+  </article>
+
+
+</div>
+  </div>
+</div>
+  </div>
+              <div class="container m-t-lg">
+                <small class="pull-right"><a href="https://thinkit.co.jp/article/15893#" class="btn btn-default">Top&#x3078;&#x623B;&#x308B;</a></small>
+              </div>
+          </div>
+          <div class="col-md-7 col-md-offset-1 radix-layouts-sidebar">
+            <aside class="sidebar">
+                <div class="region region-sidebar">
+    <div id="block-block-80" class="clear-block block block-block">
+
+      
+  <div class="content">
+    <div class="tex2jax">
+<div id="div-gpt-ad-1450940771091-1">
+
+</div></div>  </div>
+</div>
+<div id="block-block-74" class="clear-block block block-block">
+
+      
+  <div class="content">
+    <div class="tex2jax"><p><a href="https://thinkit.co.jp/member"><img src="https://thinkit.co.jp/sites/all/themes/radix_thinkit/assets/images/mailmag.png"></a></p>
+</div>  </div>
+</div>
+<div id="block-block-103" class="clear-block block block-block">
+
+      
+  <div class="content">
+    <div class="tex2jax"><p><a href="https://thinkit.co.jp/techbook"><img src="https://thinkit.co.jp/sites/default/files/techbook.png"></a></p></div>  </div>
+</div>
+<div id="block-views-list_article-block_11" class="clear-block block block-views">
+
+        <h2><i class="fa fa-bookmark"></i> &#x7279;&#x5225;&#x8A18;&#x4E8B;[PR]<a href="https://thinkit.co.jp/type/4535"><span class="pull-right">&#x8A18;&#x4E8B;&#x4E00;&#x89A7;</span></a></h2>
+    
+  <div class="content">
+    <div class="view view-list-article view-id-list_article view-display-id-block_11 pr-list view-dom-id-bc73e9a555f9abb80e0ef80a207f13db">
+        
+  
+  
+      <div class="view-content">
+        <div class="media">
+      
+          <div class="media-left"><a href="https://thinkit.co.jp/article/15754"><img src="https://thinkit.co.jp/sites/default/files/styles/60x60/public/main_images/iggnahplgkponfal.png?itok=QN7Gv4ZV" class="media-object"></a></div>
+<div class="media-body"><a href="https://thinkit.co.jp/article/15754"><span class="title">&#x3064;&#x3044;&#x306B;&#x305D;&#x306E;&#x5168;&#x5BB9;&#x304C;&#x660E;&#x3089;&#x304B;&#x306B;! &#x30AF;&#x30E9;&#x30A6;&#x30C9;&#x30CD;&#x30A4;&#x30C6;&#x30A3;&#x30D6;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x306E;&#x305F;&#x3081;&#x306E;&#x30AA;&#x30E9;&#x30AF;&#x30EB;&#x306E;&#x65B0;&#x3057;&#x3044;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x958B;&#x767A;&#x30D7;&#x30E9;&#x30C3;&#x30C8;&#x30D5;&#x30A9;&#x30FC;&#x30E0;&#x3068;&#x306F;</span></a></div>
+    </div>
+  <div class="media">
+      
+          <div class="media-left"><a href="https://thinkit.co.jp/article/15483"><img src="https://thinkit.co.jp/sites/default/files/styles/60x60/public/main_images/an_oracle_main.jpg?itok=KN8TAgJ-" class="media-object"></a></div>
+<div class="media-body"><a href="https://thinkit.co.jp/article/15483"><span class="title">&#x53F0;&#x98A8;!? &#x98DF;&#x751F;&#x6D3B;!? &#x5A5A;&#x6D3B;!? ADWC&#x3067;&#x30A2;&#x30EC;&#x30B3;&#x30EC;&#x5206;&#x6790;&#x3057;&#x3066;&#x307F;&#x307E;&#x3057;&#x305F;&#xFF01; &#x300C;Autonomous&#x9078;&#x624B;&#x6A29; &#xFF5E;&#x30AA;&#x30FC;&#x30D7;&#x30F3;&#x30C7;&#x30FC;&#x30BF;&#x5206;&#x6790;&#x7DE8;&#xFF5E;&#x300D;&#x30EC;&#x30DD;&#x30FC;&#x30C8;</span></a></div>
+    </div>
+  <div class="media">
+      
+          <div class="media-left"><a href="https://thinkit.co.jp/article/14031"><img src="https://thinkit.co.jp/sites/default/files/styles/60x60/public/main_images/14031_main.jpg?itok=6Szgkxga" class="media-object"></a></div>
+<div class="media-body"><a href="https://thinkit.co.jp/article/14031"><span class="title">&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x3092;&#x30A8;&#x30F3;&#x30BF;&#x30FC;&#x30D7;&#x30E9;&#x30A4;&#x30BA;&#x30EC;&#x30C7;&#x30A3;&#x306B; OpenShift&#x306B;&#x304B;&#x3051;&#x308B;Red Hat&#x306E;&#x610F;&#x6C17;&#x8FBC;&#x307F;&#x3068;&#x306F;&#xFF1F; </span></a></div>
+    </div>
+  <div class="media">
+      
+          <div class="media-left"><a href="https://thinkit.co.jp/article/14032"><img src="https://thinkit.co.jp/sites/default/files/styles/60x60/public/main_images/14032_main.jpg?itok=GFOlGNIT" class="media-object"></a></div>
+<div class="media-body"><a href="https://thinkit.co.jp/article/14032"><span class="title">runC vs. cc-runtime vs. kata-runtime&#xFF1F;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&#x30E9;&#x30F3;&#x30BF;&#x30A4;&#x30E0;&#x306E;&#x5185;&#x90E8;&#x69CB;&#x9020;&#x3068;&#x6027;&#x80FD;&#x6BD4;&#x8F03;</span></a></div>
+    </div>
+  <div class="media">
+      
+          <div class="media-left"><a href="https://thinkit.co.jp/article/14044"><img src="https://thinkit.co.jp/sites/default/files/styles/60x60/public/main_images/jkd_pivotal01_main.jpg?itok=2zZwZdNj" class="media-object"></a></div>
+<div class="media-body"><a href="https://thinkit.co.jp/article/14044"><span class="title">Kubernetes&#x3001;PaaS&#x3001;Serverless&#x306E;&#x3069;&#x308C;&#x3092;&#x9078;&#x3076;&#x306E;&#x304B;&#xFF1F; &#x6A5F;&#x80FD;&#x6BD4;&#x8F03;&#x3068;&#x4F7F;&#x3044;&#x5206;&#x3051;&#x306E;&#x30DD;&#x30A4;&#x30F3;&#x30C8;</span></a></div>
+    </div>
+  <div class="media">
+      
+          <div class="media-left"><a href="https://thinkit.co.jp/article/14034"><img src="https://thinkit.co.jp/sites/default/files/styles/60x60/public/main_images/jkd_ibm01_main.png?itok=PyJEdesa" class="media-object"></a></div>
+<div class="media-body"><a href="https://thinkit.co.jp/article/14034"><span class="title">&#x30AA;&#x30FC;&#x30D7;&#x30F3;&#x3067;&#x30ED;&#x30C3;&#x30AF;&#x30A4;&#x30F3;&#x306A;&#x3057; &#x696D;&#x52D9;&#x3067;Kubernetes&#x3092;&#x4F7F;&#x3046;&#x305F;&#x3081;&#x306E;&#x201C;&#x6700;&#x9AD8;&#x306E;&#x4ED5;&#x4E8B;&#x9053;&#x5177;&#x201D;&#x3068;&#x306F;</span></a></div>
+    </div>
+  <div class="media">
+      
+          <div class="media-left"><a href="https://thinkit.co.jp/article/14029"><img src="https://thinkit.co.jp/sites/default/files/styles/60x60/public/main_images/jkd_apc01_main.jpg?itok=ufLJJglJ" class="media-object"></a></div>
+<div class="media-body"><a href="https://thinkit.co.jp/article/14029"><span class="title">Kubernetes&#x3067;&#x5B89;&#x5168;&#x306B;&#x30A2;&#x30D7;&#x30EA;&#x30B1;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x30C7;&#x30D7;&#x30ED;&#x30A4;&#x3059;&#x308B;CD&#x30C4;&#x30FC;&#x30EB;&#x201C;Spinnaker&#x201D;&#x3068;&#x306F;</span></a></div>
+    </div>
+  <div class="media">
+      
+          <div class="media-left"><a href="https://thinkit.co.jp/article/14030"><img src="https://thinkit.co.jp/sites/default/files/styles/60x60/public/main_images/jkd_microsoft_main.jpg?itok=6imJTzPa" class="media-object"></a></div>
+<div class="media-body"><a href="https://thinkit.co.jp/article/14030"><span class="title">Azure&#x306B;&#x3088;&#x308B;&#x30DE;&#x30CD;&#x30FC;&#x30B8;&#x30C9;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x3068;Kubernetes&#x30A8;&#x30B3;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x3067;&#x201C;NoOps&#x201D;&#x3092;&#x5B9F;&#x73FE;</span></a></div>
+    </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>  </div>
+</div>
+<div id="block-block-81" class="clear-block block block-block">
+
+      
+  <div class="content">
+    <div class="tex2jax">
+<div id="div-gpt-ad-1450940771091-2">
+
+</div></div>  </div>
+</div>
+<div id="block-block-82" class="clear-block block block-block">
+
+      
+  <div class="content">
+    <div class="tex2jax">
+<div id="div-gpt-ad-1450940771091-3">
+
+</div></div>  </div>
+</div>
+<div id="block-views-popular-block_2" class="clear-block block block-views">
+
+        <h2><div class="tex2jax"><i class="fa fa-line-chart"></i> &#x30E9;&#x30F3;&#x30AD;&#x30F3;&#x30B0;</div></h2>
+    
+  <div class="content">
+    <div class="view view-popular view-id-popular view-display-id-block_2 view-dom-id-87d79a8bfcc5dc3204bc8527191ab44c">
+        
+  
+  
+      <div class="view-content">
+      <div class="ranking">    <ol class="number-list">          <li class="views-row views-row-1">  
+  <span class="views-field views-field-title">        <span class="field-content"><a href="https://thinkit.co.jp/article/70/1">JSON&#x3063;&#x3066;&#x306A;&#x306B;&#x3082;&#x306E;&#xFF1F;</a></span>  </span></li>
+          <li class="views-row views-row-2">  
+  <span class="views-field views-field-title">        <span class="field-content"><a href="https://thinkit.co.jp/article/976/1">&#x81EA;&#x5B85;&#x30B5;&#x30FC;&#x30D0;&#x30FC;&#x3092;&#x7ACB;&#x3066;&#x308B;&#x30E1;&#x30EA;&#x30C3;&#x30C8;&#x3068;&#x30C7;&#x30E1;&#x30EA;&#x30C3;&#x30C8;</a></span>  </span></li>
+          <li class="views-row views-row-3">  
+  <span class="views-field views-field-title">        <span class="field-content"><a href="https://thinkit.co.jp/free/tech/18/1/1.html">LDAP&#x3068;&#x306F;&#x4F55;&#x3092;&#x3059;&#x308B;&#x3082;&#x306E;&#xFF1F;</a></span>  </span></li>
+          <li class="views-row views-row-4">  
+  <span class="views-field views-field-title">        <span class="field-content"><a href="https://thinkit.co.jp/article/127/1">ESXi&#x3063;&#x3066;&#x4F55;&#x3060;&#xFF1F;</a></span>  </span></li>
+          <li class="views-row views-row-5">  
+  <span class="views-field views-field-title">        <span class="field-content"><a href="https://thinkit.co.jp/article/981/1">&#x81EA;&#x5B85;&#x30B5;&#x30FC;&#x30D0;&#x30FC;&#x3092;&#x4F5C;&#x3063;&#x3066;&#x307F;&#x3088;&#x3046;</a></span>  </span></li>
+          <li class="views-row views-row-6">  
+  <span class="views-field views-field-title">        <span class="field-content"><a href="https://thinkit.co.jp/article/724/1">syslog&#x3092;&#x62BC;&#x3055;&#x3048;&#x3088;&#x3046;&#xFF01;</a></span>  </span></li>
+          <li class="views-row views-row-7">  
+  <span class="views-field views-field-title">        <span class="field-content"><a href="https://thinkit.co.jp/article/11837">&#x30DF;&#x30C9;&#x30EB;&#x30A6;&#x30A7;&#x30A2;(Web&#x3001;AP&#x3001;DB)&#x306B;&#x3064;&#x3044;&#x3066;&#x77E5;&#x308D;&#x3046;</a></span>  </span></li>
+          <li class="views-row views-row-8">  
+  <span class="views-field views-field-title">        <span class="field-content"><a href="https://thinkit.co.jp/story/2014/06/10/4999">OpenStack&#x306E;&#x30A2;&#x30FC;&#x30AD;&#x30C6;&#x30AF;&#x30C1;&#x30E3;&#x3092;&#x7406;&#x89E3;&#x3057;&#x3088;&#x3046;</a></span>  </span></li>
+          <li class="views-row views-row-9">  
+  <span class="views-field views-field-title">        <span class="field-content"><a href="https://thinkit.co.jp/story/2013/02/12/3960">Arduino&#x3092;&#x7528;&#x610F;&#x3057;&#x3066;&#x7C21;&#x5358;&#x306A;&#x30D7;&#x30ED;&#x30B0;&#x30E9;&#x30DF;&#x30F3;&#x30B0;&#x3092;&#x306F;&#x3058;&#x3081;&#x3088;&#x3046;</a></span>  </span></li>
+          <li class="views-row views-row-10">  
+  <span class="views-field views-field-title">        <span class="field-content"><a href="https://thinkit.co.jp/story/2012/10/17/3722">&#x30DB;&#x30B9;&#x30C8;&#x578B;&#x3068;&#x30CF;&#x30A4;&#x30D1;&#x30FC;&#x30D0;&#x30A4;&#x30B6;&#x30FC;&#x578B;&#x306E;&#x9055;&#x3044;&#x306F;&#x4F55;&#xFF1F;VMware vSphere Hypervisor &#x306E;&#x6982;&#x8981;</a></span>  </span></li>
+      </ol></div>    </div>
+  
+  
+  
+  
+  
+  
+</div>  </div>
+</div>
+<div id="block-block-100" class="clear-block block block-block">
+
+        <h2><div class="tex2jax"><i class="fa fa-headphones"></i> OSSfm&#x914D;&#x4FE1;&#x4E2D;&#xFF01;</div></h2>
+    
+  <div class="content">
+    <div class="tex2jax"><iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/488955459&amp;color=%23ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true"></iframe>
+
+<p class="orig_source">&#x300C;<a href="https://thinkit.co.jp/OSSfm" target="_blank">OSSfm</a>&#x300D;&#x306F;&#x201C;&#x30AA;&#x30FC;&#x30D7;&#x30F3;&#x30BD;&#x30FC;&#x30B9;&#x6280;&#x8853;&#x306E;&#x5B9F;&#x8DF5;&#x6D3B;&#x7528;&#x30E1;&#x30C7;&#x30A3;&#x30A2;&#x201D;&#x3067;&#x3042;&#x308B;Think IT&#x304C;&#x304A;&#x5C4A;&#x3051;&#x3059;&#x308B;&#x30DD;&#x30C3;&#x30C9;&#x30AD;&#x30E3;&#x30B9;&#x30C8;&#x3067;&#x3059;&#x3002;</p></div>  </div>
+</div>
+  </div>
+            </aside>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  
+</div> 
+
+
+<footer id="footer" class="footer" role="footer">
+  
+<section id="footer-links" class="container">
+
+  <div class="row site_links text-center">
+    <ul>
+      <li><a href="https://thinkit.co.jp/about">Think IT&#x306B;&#x3064;&#x3044;&#x3066;</a></li>
+      <li><a href="https://thinkit.co.jp/member">&#x4F1A;&#x54E1;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x306E;&#x3054;&#x6848;&#x5185;</a></li>
+      <li><a href="https://thinkit.co.jp/tibooks">Think IT Books&#x30B7;&#x30EA;&#x30FC;&#x30BA;</a></li>
+      <li><a href="https://thinkit.co.jp/tievents">Think IT&#x306E;&#x30A4;&#x30D9;&#x30F3;&#x30C8;</a></li>
+      <li><a href="https://thinkit.co.jp/maniaxjp">&#x30DE;&#x30CB;&#x30A2;&#x30C3;&#x30AF;&#x30B9;&#x30B7;&#x30EA;&#x30FC;&#x30BA;</a></li>
+      <li><a href="https://thinkit.co.jp/contact">&#x304A;&#x554F;&#x3044;&#x5408;&#x308F;&#x305B;</a></li>
+      <li><a href="https://thinkit.co.jp/admenu">&#x5E83;&#x544A;&#x63B2;&#x8F09;&#x306E;&#x3054;&#x6848;&#x5185;</a></li>
+    </ul>
+    <ul>
+      <li><a href="http://www.impress.co.jp/business/about_web/" target="_blank">&#x672C;&#x30B5;&#x30A4;&#x30C8;&#x306E;&#x3054;&#x5229;&#x7528;&#x306B;&#x3064;&#x3044;&#x3066;</a></li>
+      <li><a href="http://www.impress.co.jp/privacy_policy/" target="_blank">&#x30D7;&#x30E9;&#x30A4;&#x30D0;&#x30B7;&#x30FC;&#x306B;&#x3064;&#x3044;&#x3066;</a></li>
+      <li><a href="http://www.impress.co.jp/specific_trade_law/index_bm.html" target="_blank">&#x7279;&#x5B9A;&#x5546;&#x53D6;&#x5F15;&#x6CD5;&#x306B;&#x57FA;&#x3065;&#x304F;&#x8868;&#x793A;</a></li>
+      <li><a href="http://www.impress.co.jp/profile/" target="_blank">&#x4F1A;&#x793E;&#x6982;&#x8981;</a></li>
+      <li><a href="http://www.impressholdings.com/" target="_blank">&#x30A4;&#x30F3;&#x30D7;&#x30EC;&#x30B9;&#x30B0;&#x30EB;&#x30FC;&#x30D7;</a></li>
+    </ul>
+  </div>
+
+  <div class="row hidden-xs">
+    <div class="col-md-6 manage_company">
+      <ul>
+        <li>
+          <a href="https://www.impress.co.jp/" target="_blank">
+            <span class="icon_iph"></span>&#x682A;&#x5F0F;&#x4F1A;&#x793E;&#x30A4;&#x30F3;&#x30D7;&#x30EC;&#x30B9;</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-md-18 hidden-xs manage_sites">
+      <ul>
+        <li class="clear">
+          <a href="https://dc-cloud.impress.co.jp/" target="_blank"><span class="icon_DCguide"></span>&#x30C7;&#x30FC;&#x30BF;&#x30BB;&#x30F3;&#x30BF;&#x30FC;&#x3092;&#x691C;&#x7D22;&#x30FB;&#x898B;&#x7A4D;&#x300C;&#x30AF;&#x30E9;&#x30A6;&#x30C9;&amp;&#x30C7;&#x30FC;&#x30BF;&#x30BB;&#x30F3;&#x30BF;&#x30FC;&#x5B8C;&#x5168;&#x30AC;&#x30A4;&#x30C9;&#x300D;</a>
+        </li>
+        <li>
+          <a href="https://thinkit.co.jp/">
+            <span class="icon_ThinkIT"></span>&#x30BD;&#x30D5;&#x30C8;&#x30A6;&#x30A7;&#x30A2;&#x958B;&#x767A;&#x30A8;&#x30F3;&#x30B8;&#x30CB;&#x30A2;&#x306B;&#x300C;Think IT&#x300D;</a>
+        </li>
+        <li>
+          <a href="http://web-tan.forum.impressrd.jp/" target="_blank">
+              <span class="icon_Webtan"></span>&#x30DB;&#x30FC;&#x30E0;&#x30DA;&#x30FC;&#x30B8;&#x3068;&#x30CD;&#x30C3;&#x30C8;&#x30DE;&#x30FC;&#x30B1;&#x30C6;&#x30A3;&#x30F3;&#x30B0;&#x300C;Web&#x62C5;&#x5F53;&#x8005;Forum&#x300D;</a>
+        </li>
+        <li>
+          <a href="https://research.impress.co.jp/" target="_blank">
+            <span class="icon_iil"></span>&#x30A4;&#x30F3;&#x30BF;&#x30FC;&#x30CD;&#x30C3;&#x30C8;&#x30E1;&#x30C7;&#x30A3;&#x30A2;&#x306E;&#x7DCF;&#x5408;&#x7814;&#x7A76;&#x6240;&#x3000;&#x8ABF;&#x67FB;&#x5831;&#x544A;&#x66F8;</a>
+        </li>
+        <li class="clear">
+          <a href="http://cloud.watch.impress.co.jp/" target="_blank">
+            <span class="icon_cloudwatch"></span>&#x6CD5;&#x4EBA;&#x5411;&#x3051;IT&#x30FB;&#x30AF;&#x30E9;&#x30A6;&#x30C9;&#x30BD;&#x30EA;&#x30E5;&#x30FC;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x6700;&#x65B0;&#x30CB;&#x30E5;&#x30FC;&#x30B9;&#x300C;&#x30AF;&#x30E9;&#x30A6;&#x30C9;Watch&#x300D;</a>
+        </li>
+        <li>
+          <a href="http://it.impressbm.co.jp/" target="_blank">
+            <span class="icon_ITLeaders"></span>&#x65E5;&#x672C;&#x306E;IT&#x3092;&#x5909;&#x3048;&#x308B;&#x4EBA;&#x305F;&#x3061;&#x3078;&#xFF01;&#x300C;IT Leaders&#x300D;</a>
+        </li>
+        <li>
+          <a href="https://find-it.jp/" target="_blank">
+            <span class="icon_FindIT"></span>IT&#x88FD;&#x54C1;&#x6BD4;&#x8F03;&#x5C0E;&#x5165;&#x30B5;&#x30A4;&#x30C8;&#x300C;Find-IT&#x300D;</a>
+        </li>
+        <li>
+          <a href="http://sgforum.impress.co.jp/" target="_blank">
+            <span class="icon_WBBforum"></span>&#x30A8;&#x30CD;&#x30EB;&#x30AE;&#x30FC;&#x3068;&#x60C5;&#x5831;&#x901A;&#x4FE1;&#x306E;&#x878D;&#x5408;&#x6642;&#x4EE3;&#x3092;&#x62D3;&#x304F;&#x30B9;&#x30DE;&#x30FC;&#x30C8;&#x30B0;&#x30EA;&#x30C3;&#x30C9;&#x5C02;&#x9580;&#x30B5;&#x30A4;&#x30C8;</a>
+        </li>
+        <li class="clear">
+          <a href="https://netshop.impress.co.jp/" target="_blank">
+            <span class="icon_netshop"></span>EC&#x306B;&#x643A;&#x308F;&#x308B;&#x4EBA;&#x306E;&#x305F;&#x3081;&#x306E;&#x30E1;&#x30C7;&#x30A3;&#x30A2;&#x300C;&#x30CD;&#x30C3;&#x30C8;&#x30B7;&#x30E7;&#x30C3;&#x30D7;&#x62C5;&#x5F53;&#x8005;&#x30D5;&#x30A9;&#x30FC;&#x30E9;&#x30E0;&#x300D;</a>
+        </li><li>
+          <a href="https://b-library.impress.co.jp/" target="_blank">
+            <span class="icon_ibl"></span>&#x88FD;&#x54C1;&#xA0;&#x2044;&#xA0;&#x30B5;&#x30FC;&#x30D3;&#x30B9;&#x306E;&#x8CC7;&#x6599;&#x3092;&#x5165;&#x624B;&#x300C;Impress Business Library&#x300D;</a>
+        </li>
+        <li>
+          <a href="https://dcross.impress.co.jp/" target="_blank">
+            <span class="icon_digitalX"></span>&#x30C7;&#x30B8;&#x30BF;&#x30EB;&#x304C;&#x751F;&#x307F;&#x3060;&#x3059;&#x672A;&#x6765;&#x3092;&#x8003;&#x3048;&#x308B;&#x300C;DIGITAL X&#x300D;</a>
+        </li>
+      </ul>
+    </div>
+</div></section>
+
+</footer>
+
+  <div class="copyright text-center">
+    Copyright &#xA9; 2004-2019 Impress Corporation. An Impress Group Company. All rights reserved.
+  </div>
+<a href="https://thinkit.co.jp/article/15893#" id="backtotop"><i class="fa fa-chevron-up"></i></a>
+
+  
+
+
+</body>
+</html>
+
+<!-- Page cached by Boost @ 2019-03-30 16:44:45, expires @ 2019-03-31 16:44:45, lifetime 1日 -->
