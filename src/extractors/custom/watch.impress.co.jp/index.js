@@ -40,14 +40,11 @@ export const WatchImpressCoJpExtractor = {
     headersCleaner: false,
 
     transforms: {
-      img: $node => {
+      'img[ajax]': $node => {
         const ajax = $node.attr('ajax');
-        if (ajax !== undefined) {
-          const src = $node.attr('src');
-          const url = URL.parse(src);
-          const origin = `${url.protocol}//${url.hostname}`;
-          $node.attr('src', origin + ajax);
-        }
+        const src = $node.attr('src');
+        const url = URL.resolve(src, ajax);
+        $node.attr('src', url);
       },
     },
 
