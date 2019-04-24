@@ -128,6 +128,7 @@ export * from './wired.jp';
 export * from './japan.zdnet.com';
 export * from './www.rbbtoday.com';
 export * from './www3.nhk.or.jp';
+export * from './gihyo.jp';
 export * from './www.lemonde.fr';
 export * from './www.phoronix.com';
 export * from './pitchfork.com';
