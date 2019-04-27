@@ -68,10 +68,7 @@ describe('NewsMynaviJpExtractor', () => {
 
       // Update these values with the expected values from
       // the article.
-      assert.equal(
-        dek,
-        'Check Point Software Technologiesは2月20日(米国時間)、人気の高い圧縮・解凍ソフトウェアであるWinRARに長年にわたって脆弱性が存在していると伝えた。この脆弱性の影響で、細工されたファイルを展開する段階でマルウェアに感染させられる可能性があるという。'
-      );
+      assert.equal(dek, null);
     });
 
     it('returns the lead_image_url', async () => {
@@ -107,7 +104,7 @@ describe('NewsMynaviJpExtractor', () => {
       // the article.
       assert.equal(
         first13,
-        'Check Point Software Technologiesは2月20日(米国時間)、「Extracting a 19 Year Old Code Execution from WinRAR -'
+        '後藤大地 関連キーワード： 脆弱性 Check Point Software Technologiesは2月20日(米国時間)、「Extracting a 19 Year Old Code Execution'
       );
     });
   });
