@@ -30,12 +30,10 @@ export const NewsMynaviJpExtractor = {
     headersCleaner: false,
 
     transforms: {
-      img: ($node, $) => {
+      'img[data-original]': ($node, $) => {
         const dataOriginal = $node.attr('data-original');
-        if (dataOriginal !== undefined) {
-          const href = $('link[rel="canonical"]').attr('href');
-          $node.attr('src', href + dataOriginal);
-        }
+        const href = $('link[rel="canonical"]').attr('href');
+        $node.attr('src', href + dataOriginal);
       },
     },
 
